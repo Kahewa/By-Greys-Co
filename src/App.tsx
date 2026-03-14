@@ -82,6 +82,30 @@ const PORTFOLIO: PortfolioItem[] = [
   //{ id: 16, title: "Wellness Dashboard", category: 'ui', thumbnail: "https://picsum.photos/seed/ui2/800/600", link: "#", type: 'image' },
 ];
 
+const TESTIMONIALS = [
+  {
+    id: 1,
+    username: "By Greys",
+    handle: "@createdbygreys",
+    message: "",
+    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772803844/DSCF4260_wkfne4.jpg"
+  },
+  {
+    id: 2,
+    username: "By Greys",
+    handle: "@createdbygreys",
+    message: "",
+    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772803844/DSCF4260_wkfne4.jpg"
+  },
+  {
+    id: 3,
+    username: "By Greys",
+    handle: "@createdbygreys",
+    message: "",
+    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772803844/DSCF4260_wkfne4.jpg"
+  }
+];
+
 // --- Components ---
 
 const Modal = ({ 
@@ -316,17 +340,18 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
     <div className="absolute top-20 right-0 w-64 h-64 bg-accent-pink/10 blur-3xl rounded-full -z-10" />
     <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-green/5 blur-3xl rounded-full -z-10" />
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
       {/* Mobile-only: Creative Executive & Founder above the image */}
-      <div className="md:hidden mb-4">
-        <motion.span 
+      <div className="md:hidden">
+        <motion.h1 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.1 }}
-          className="text-accent-green font-medium tracking-[0.2em] uppercase text-[10px] border-b border-accent-green/30 pb-1"
+          className="text-4xl font-serif leading-tight mb-4"
         >
-          
-        </motion.span>
+          Creative <br />
+          <span className="italic text-accent-green">Executive</span> <br />
+          & Founder.
+        </motion.h1>
       </div>
 
       <motion.div 
@@ -374,7 +399,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-5xl md:text-7xl font-serif mt-4 mb-10 leading-[1.1] tracking-tight"
+          className="hidden md:block text-5xl md:text-7xl font-serif mt-4 mb-10 leading-[1.1] tracking-tight"
         >
           Creative <br />
           <span className="italic text-accent-green">Executive</span> <br />
@@ -400,7 +425,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
           Thanks for stopping by.
         </motion.div>
 
-        <div className="flex flex-wrap gap-6 mb-12">
+        <div className="flex flex-wrap gap-6 mb-16">
           <motion.button
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
@@ -420,6 +445,40 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
             <span className="tracking-widest uppercase text-xs font-bold">Visit Shop</span>
             <ShoppingBag size={18} className="text-accent-green" />
           </motion.button>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="mb-16">
+          <h3 className="text-accent-green font-bold tracking-[0.3em] uppercase text-xs mb-8 border-l-2 border-accent-green pl-4">
+            Testimonials
+          </h3>
+          <div className="flex flex-wrap gap-4">
+            {TESTIMONIALS.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+                className="bg-white border border-black/10 p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow max-w-xs h-fit"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.username} 
+                    className="w-10 h-10 rounded-full border border-accent-green/20"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div>
+                    <div className="text-xs font-bold">{testimonial.username}</div>
+                    <div className="text-[10px] text-accent-green">{testimonial.handle}</div>
+                  </div>
+                </div>
+                <p className="text-xs text-black/70 leading-relaxed italic">
+                  "{testimonial.message}"
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <SocialLinks />
@@ -502,7 +561,9 @@ const ServicesView = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className={`grid gap-8 ${
+        activeService === 'ui' ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+      }`}>
         <AnimatePresence mode="wait">
           {filteredItems.map((item) => (
             <motion.div
@@ -512,7 +573,7 @@ const ServicesView = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className={`group relative overflow-hidden border border-black bg-white cursor-pointer ${
-                item.category === 'video' ? 'aspect-[9/16]' : 'aspect-square'
+                item.category === 'video' ? 'aspect-[9/16]' : item.category === 'ui' ? 'aspect-video' : 'aspect-square'
               }`}
             >
               <img 
