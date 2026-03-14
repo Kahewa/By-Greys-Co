@@ -10,7 +10,7 @@ import {
   Music, 
   Linkedin, 
   Github,
-  Mail, 
+  Mail,
   ShoppingBag, 
   Palette, 
   Video, 
@@ -48,7 +48,7 @@ interface PortfolioItem {
 // --- Mock Data ---
 
 const PRODUCTS: Product[] = [
- // { id: 1, name: "Silk Scarf - Blush", price: "$45.00", image: "https://picsum.photos/seed/scarf/400/600", link: "#" },
+  { id: 1, name: "Haven By Greys", price: "N$0.00", image: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451390/Modern_Formal_Invoice_for_Business_Consultant_cmhqgf.png", link: "https://wa.me/264818093531" },
   //{ id: 2, name: "Minimalist Planner", price: "$28.00", image: "https://picsum.photos/seed/planner/400/500", link: "#" },
   //{ id: 3, name: "Handcrafted Candle", price: "$32.00", image: "https://picsum.photos/seed/candle/400/500", link: "#" },
   //{ id: 4, name: "Gold Hoop Earrings", price: "$55.00", image: "https://picsum.photos/seed/earrings/400/500", link: "#" },
@@ -58,16 +58,16 @@ const PRODUCTS: Product[] = [
 const PORTFOLIO: PortfolioItem[] = [
   // Graphic Design
   { id: 1, title: "PDF Document", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772726336/Company_Profile_cover_knnvmc.png", link: "#", type: 'image' },
-  { id: 2, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
+  { id: 2, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364319/NameTag_xk7uth.png", link: "#", type: 'image' },
   { id: 3, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364406/namib_cp5wqq.png", link: "#", type: 'image' },
   { id: 4, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364323/NamibNest_Logo_bok2wq.png", link: "#", type: 'image' },
-  { id: 5, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
-  { id: 6, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
+  { id: 5, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448658/FRONT_iyjhfx.png", link: "#", type: 'image' },
+  { id: 6, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448605/Black_hylkt9.png", link: "#", type: 'image' },
   { id: 7, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364338/Beige_Professional_Self_Employed_Business_Services_Pitch_Flyer_A4_zhm7ny.png", link: "#", type: 'image' },
   { id: 8, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448588/model_ujimaw.png", link: "#", type: 'image' },
   { id: 9, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364372/STA_DESSERTS_b2tolf.png", link: "#", type: 'image' },
   { id: 10, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364320/25_Nov_Agenda_Drop_gdkwyi.png", link: "#", type: 'image' },
-  { id: 11, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364319/NameTag_xk7uth.png", link: "#", type: 'image' },
+  { id: 11, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
   { id: 12, title: "Invitations", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448512/Yellow_and_Pink_Watercolour_Pets_Kitty_Party_Invitation_sruupa.png", link: "#", type: 'image' },
   { id: 13, title: "Thumnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364294/Modern_Daily_Podcast_YouTube_Thumbnail_eloeom.png", link: "#", type: 'image' },
   { id: 14, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
@@ -75,10 +75,10 @@ const PORTFOLIO: PortfolioItem[] = [
 
 
   // Video
-  //{ id: 13, title: "Summer Campaign Reel", category: 'video', thumbnail: "https://picsum.photos/seed/video1/1080/1920", link: "#", type: 'video' },
+  { id: 16, title: "Click Here", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451044/13_rmzxjx.png", link: "https://youtu.be/u8Fl_CTStnQ?si=4zhQ99-LFkW_Jr_D", type: 'video' },
  // { id: 14, title: "Product Launch Teaser", category: 'video', thumbnail: "https://picsum.photos/seed/video2/1920/1080", link: "#", type: 'video' },
   // UI Design
- // { id: 15, title: "E-commerce App UI", category: 'ui', thumbnail: "https://picsum.photos/seed/ui1/800/600", link: "#", type: 'image' },
+  { id: 17, title: "Click Here", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451029/14_jsjsxw.png", link: "https://bygreysco.netlify.app", type: 'image' },
   //{ id: 16, title: "Wellness Dashboard", category: 'ui', thumbnail: "https://picsum.photos/seed/ui2/800/600", link: "#", type: 'image' },
 ];
 
@@ -298,9 +298,6 @@ const SocialLinks = () => (
     </a>
     <a href="https://github.com/Kahewa" className="p-2 border border-black rounded-full hover:bg-accent-pink transition-colors">
       <Github size={20} />
-    </a>
-    <a href="bygreys.na@gmail.com" className="p-2 border border-black rounded-full hover:bg-accent-pink transition-colors">
-      <Mail size={20} />
     </a>
   </div>
 );
@@ -570,11 +567,11 @@ const ShopView = () => {
     >
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
         <div>
-          <span className="text-accent-pink font-bold uppercase tracking-widest text-xs">Matthew 9 : 37-38</span>
+          <span className="text-accent-green font-bold uppercase tracking-widest text-xs">Matthew 9 : 37-38</span>
           <h2 className="text-5xl font-serif mt-2">Haven By Greys</h2>
         </div>
         <p className="max-w-xs text-black/60 italic">
-          "Hi! Welcome to my shop." — Your Range of Christian Themed Aestheics.
+          Welcome to my shop! This is my Range of Christian Themed Aestheics. Happy Shopping!
         </p>
       </div>
 
