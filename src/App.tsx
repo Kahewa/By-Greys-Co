@@ -57,18 +57,21 @@ const PRODUCTS: Product[] = [
 
 const PORTFOLIO: PortfolioItem[] = [
   // Graphic Design
-  { id: 1, title: "Basic Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364406/namib_cp5wqq.png", link: "#", type: 'image' },
-  { id: 2, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364372/STA_DESSERTS_b2tolf.png", link: "#", type: 'image' },
-  { id: 3, title: "Company Profile", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772726336/Company_Profile_cover_knnvmc.png", link: "#", type: 'image' },
-  { id: 4, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364338/Beige_Professional_Self_Employed_Business_Services_Pitch_Flyer_A4_zhm7ny.png", link: "#", type: 'image' },
-  { id: 5, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364323/NamibNest_Logo_bok2wq.png", link: "#", type: 'image' },
-  { id: 6, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364320/25_Nov_Agenda_Drop_gdkwyi.png", link: "#", type: 'image' },
-  { id: 7, title: "Name Tag", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364319/NameTag_xk7uth.png", link: "#", type: 'image' },
-  { id: 8, title: "Youtube Thumnail", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364294/Modern_Daily_Podcast_YouTube_Thumbnail_eloeom.png", link: "#", type: 'image' },
-  { id: 9, title: "YouTube Thumbnail", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
-  { id: 10, title: "Desktop Wallpaper", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364361/Beige_White_and_Blue_Scrapbook_Style_Personal_Desktop_Wallpaper_t0it74.png", link: "#", type: 'image' },
-  { id: 11, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
-  { id: 12, title: "Product sticker - Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364330/Orange_White_Modern_Illustration_Fruit_Jam_Product_Label_l1kp0f.png", link: "#", type: 'image' },
+  { id: 1, title: "PDF Document", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772726336/Company_Profile_cover_knnvmc.png", link: "#", type: 'image' },
+  { id: 2, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
+  { id: 3, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364406/namib_cp5wqq.png", link: "#", type: 'image' },
+  { id: 4, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364323/NamibNest_Logo_bok2wq.png", link: "#", type: 'image' },
+  { id: 5, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
+  { id: 6, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
+  { id: 7, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364338/Beige_Professional_Self_Employed_Business_Services_Pitch_Flyer_A4_zhm7ny.png", link: "#", type: 'image' },
+  { id: 8, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448588/model_ujimaw.png", link: "#", type: 'image' },
+  { id: 9, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364372/STA_DESSERTS_b2tolf.png", link: "#", type: 'image' },
+  { id: 10, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364320/25_Nov_Agenda_Drop_gdkwyi.png", link: "#", type: 'image' },
+  { id: 11, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364319/NameTag_xk7uth.png", link: "#", type: 'image' },
+  { id: 12, title: "Invitations", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448512/Yellow_and_Pink_Watercolour_Pets_Kitty_Party_Invitation_sruupa.png", link: "#", type: 'image' },
+  { id: 13, title: "Thumnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364294/Modern_Daily_Podcast_YouTube_Thumbnail_eloeom.png", link: "#", type: 'image' },
+  { id: 14, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
+  { id: 15, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364361/Beige_White_and_Blue_Scrapbook_Style_Personal_Desktop_Wallpaper_t0it74.png", link: "#", type: 'image' },
 
 
   // Video
@@ -337,7 +340,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
       >
         <div className="relative z-10 aspect-[4/5] bg-accent-pink/10 rounded-t-[120px] rounded-b-[20px] overflow-hidden border border-black/20 shadow-2xl shadow-accent-pink/5">
           <img 
-            src="https://res.cloudinary.com/dllugr1kc/image/upload/v1772275124/o_p9ksap.jpg" 
+            src="https://res.cloudinary.com/dllugr1kc/image/upload/v1772803817/DSCF4447_otsxpk.jpg" 
             alt="About Me" 
             referrerPolicy="no-referrer"
           />
