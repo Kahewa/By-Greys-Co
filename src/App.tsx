@@ -75,35 +75,30 @@ const PORTFOLIO: PortfolioItem[] = [
 
 
   // Video
-  { id: 16, title: "Click Here", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451044/13_rmzxjx.png", link: "https://youtu.be/u8Fl_CTStnQ?si=4zhQ99-LFkW_Jr_D", type: 'video' },
- // { id: 14, title: "Product Launch Teaser", category: 'video', thumbnail: "https://picsum.photos/seed/video2/1920/1080", link: "#", type: 'video' },
+  { id: 16, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
+  { id: 17, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
+
   // UI Design
-  { id: 17, title: "Click Here", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451029/14_jsjsxw.png", link: "https://bygreysco.netlify.app", type: 'image' },
+  { id: 18, title: "View", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451029/14_jsjsxw.png", link: "https://bygreysco.netlify.app", type: 'image' },
   //{ id: 16, title: "Wellness Dashboard", category: 'ui', thumbnail: "https://picsum.photos/seed/ui2/800/600", link: "#", type: 'image' },
 ];
 
 const TESTIMONIALS = [
   {
     id: 1,
-    username: "By Greys",
-    handle: "@createdbygreys",
-    message: "",
-    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772803844/DSCF4260_wkfne4.jpg"
+    username: "Tea Laboratories",
+    handle: "www.tea-labs.com",
+    message: "I had gotten the By Greys Co. number from a mutual contact. I reached out to her to help me with a project, and her service from the beginning was amazing. She is very creative, her outlook on the project gave me the inspiration I did not know I needed. She is a professional, always providing timely updates and I was not left wondering what happened or if there was progress. Overall, very kind and very nice to work with. I would highly recommend getting work done by Grace. ☺️✨",
+    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776631921/Screenshot_2026-04-19_224257_wzwysf.png"
   },
   {
     id: 2,
-    username: "By Greys",
-    handle: "@createdbygreys",
-    message: "",
-    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772803844/DSCF4260_wkfne4.jpg"
+    username: "STA Desserts",
+    handle: "@sta.desserts",
+    message: "Working with this designer for my business, STA Desserts, was such a refreshing experience. She created Valentine’s special price list posters for me, and I genuinely couldn’t have asked for better results. The designs were not only visually beautiful, but they also felt intentional, thoughtful, and truly human. In a time where so much design feels automated or AI-generated, her work stood out in the best way. Every detail reflected creativity, care, and a clear understanding of my brand. She was able to take my ideas and turn them into something elegant, eye-catching, and perfectly suited for my business. I highly recommend her to anyone looking for authentic, high-quality design work that actually feels personal and unique.",
+    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632045/WhatsApp_Image_2026-04-19_at_22.43.12_zy6efs.jpg"
   },
-  {
-    id: 3,
-    username: "By Greys",
-    handle: "@createdbygreys",
-    message: "",
-    avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772803844/DSCF4260_wkfne4.jpg"
-  }
+  
 ];
 
 // --- Components ---
