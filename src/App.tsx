@@ -20,12 +20,15 @@ import {
   Menu,
   X,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Youtube,
+  Twitch,
+  Tag
 } from 'lucide-react';
 
 // --- Types ---
 
-type Tab = 'home' | 'shop' | 'services';
+type Tab = 'home' | 'shop' | 'services' | 'rates';
 type ServiceTab = 'graphic' | 'video' | 'ui';
 
 interface Product {
@@ -46,6 +49,85 @@ interface PortfolioItem {
 }
 
 // --- Mock Data ---
+
+const RATES: Record<string, any[]> = {
+  graphics: [
+    {
+      title: "Services",
+      items: [
+        { service: "Basic Designs", desc: "Simple design structures - Single product ads, Name tags, etc.", price: "60" },
+        { service: "Thumbnails", desc: "TikTok, IG Reels, Reel Shorts, YouTube, IG Story take-over covers", price: "130" },
+        { service: "Advanced Advert", desc: "Product/Service ads, Pricelists, Book covers, Info posts, Event posters, etc.", price: "150" },
+        { service: "Invitations and Letters", desc: "Graduation, Wedding, Party, Love letters, etc.", price: "150" },
+        { service: "Startup Logo Design", desc: "New designs, Old logo refinement", price: "150" },
+      ]
+    },
+    {
+      title: "PDF Documents (Invitations / Catalogues / Business Profiles)",
+      items: [
+        { service: "One Page", desc: "A4 size - Includes consultation, active links, professional design", price: "200" },
+        { service: "Two Pages", desc: "A4 size - Includes consultation, active links, professional design", price: "380" },
+        { service: "Three Pages", desc: "A4 size - Includes consultation, active links, professional design", price: "550" },
+        { service: "More Pages", desc: "A4 size - Includes consultation, active links, professional design", price: "Consultation needed" },
+      ]
+    },
+    {
+      title: "Start Up Graphic Design Packages",
+      items: [
+        { service: "Logo Design Pack", desc: "Logo (Light + Dark Mode) + Business Cards + Email Banner", price: "300" },
+        { service: "Party Pack", desc: "2 Page PDF Invitation + 1 Page PDF Wishlist + GRWM reel", price: "650" },
+        { service: "Start-up Business Pack", desc: "Logo Design Pack + x2 Advanced Adverts + 3 Page PDF Catalogue", price: "1000" },
+      ]
+    },
+    {
+      title: "Corporate Graphic Design Packages",
+      items: [
+        { service: "Logo Design Pack (Old logo refinement)", desc: "Logo (Light + Dark Mode) + Business Card Design + Email Banner", price: "600" },
+        { service: "Wedding Pack", desc: "3 Page PDF Invitation + 5 day Countdown", price: "1,300" },
+        { service: "Business Pack", desc: "Logo Design Pack + 2 Page Company CI Doc + 5 Page Company Profile", price: "2,250" },
+      ]
+    }
+  ],
+  video: [
+    {
+      title: "Own Content Prices",
+      items: [
+        { service: "1-2 min", desc: "End result 1-2 min only", price: "200", raw: "300" },
+        { service: "3-5 min", desc: "End result 3-5 min only", price: "490", raw: "590" },
+        { service: "6-10 min", desc: "End result 6-10 min only", price: "700", raw: "800" },
+        { service: "11-15 min", desc: "End result 11-15 min only", price: "850", raw: "950" },
+        { service: "16-20 min", desc: "End result 16-20 min only", price: "1000", raw: "1100" },
+        { service: "21-45 min", desc: "End result 21-45 min only", price: "1300", raw: "1400" },
+        { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "1330", raw: "1430" },
+        { service: "YouTube Max", desc: "21-45 min + trailer + thumbnail", price: "1630", raw: "1730" },
+      ]
+    }
+  ],
+  web: [
+    {
+      title: "Web Development",
+      items: [
+        { service: "Basic Portfolio", desc: "Profile, introduction, and social links only", price: "1,500" },
+        { service: "Intermediate Portfolio", desc: "Profile, intro, social links, services, and testimonials", price: "2,800" },
+        { service: "Advanced Portfolio", desc: "Everything including past work gallery", price: "4,500" },
+      ]
+    },
+    {
+      title: "UI Design",
+      items: [
+        { service: "Company Page Design", desc: "Corporate info, team, contact sections", price: "2,000" },
+        { service: "E-commerce Design", desc: "Product pages, cart, checkout UI", price: "3,500" },
+        { service: "Software Application Design", desc: "Dashboard, user flows, complex UI", price: "3,500" },
+      ]
+    },
+    {
+      title: "Frontend Development",
+      items: [
+        { service: "Consultation required", desc: "Custom features and logic implementation", price: "Quote base" },
+      ]
+    }
+  ]
+};
 
 const PRODUCTS: Product[] = [
   { id: 1, name: "Haven By Greys", price: "N$0.00", image: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451390/Modern_Formal_Invoice_for_Business_Consultant_cmhqgf.png", link: "https://wa.me/264818093531" },
@@ -73,13 +155,13 @@ const PORTFOLIO: PortfolioItem[] = [
   { id: 14, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
   { id: 15, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364361/Beige_White_and_Blue_Scrapbook_Style_Personal_Desktop_Wallpaper_t0it74.png", link: "#", type: 'image' },
 
-
   // Video
-  { id: 16, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
-  { id: 17, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
+    { id: 16, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989031/3_jivvyf.png", link: "https://www.instagram.com/reel/DXbyVdADBlA/?igsh=b3hjeXdkZ2F1d3d3", type: 'video' },
+  { id: 17, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
+  { id: 18, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
 
   // UI Design
-  { id: 18, title: "View", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773451029/14_jsjsxw.png", link: "https://bygreysco.netlify.app", type: 'image' },
+  { id: 19, title: "ByGreysCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' },
   //{ id: 16, title: "Wellness Dashboard", category: 'ui', thumbnail: "https://picsum.photos/seed/ui2/800/600", link: "#", type: 'image' },
 ];
 
@@ -240,6 +322,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: Tab, setActiveTab: (t:
   const navItems: { id: Tab, label: string }[] = [
     { id: 'home', label: 'About' },
     { id: 'services', label: 'Portfolio' },
+    { id: 'rates', label: 'Rates' },
     { id: 'shop', label: 'Shop' },
   ];
 
@@ -329,154 +412,244 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
   <motion.div 
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className="pt-32 pb-20 px-6 max-w-7xl mx-auto relative overflow-hidden"
+    className="pt-12 md:pt-32 pb-20 px-3 md:px-6 max-w-7xl mx-auto relative overflow-hidden"
   >
-    {/* Decorative background elements for aesthetic feel */}
+    {/* Decorative background elements */}
     <div className="absolute top-20 right-0 w-64 h-64 bg-accent-pink/10 blur-3xl rounded-full -z-10" />
     <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-green/5 blur-3xl rounded-full -z-10" />
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
-      {/* Mobile-only: Creative Executive & Founder above the image */}
-      <div className="md:hidden">
+ 
+    {/* Bento Grid Layout */}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 auto-rows-auto">
+      
+      {/* Introduction Block */}
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="col-span-1 md:col-span-3 bg-white border border-black/10 rounded-[25px] md:rounded-[40px] p-5 md:p-10 flex flex-col justify-center"
+      >
         <motion.h1 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="text-4xl font-serif leading-tight mb-4"
+          className="text-2xl md:text-7xl font-serif mb-4 md:mb-8 leading-[1.1] tracking-tight"
         >
           Creative <br />
           <span className="italic text-accent-green">Executive</span> <br />
-          & Founder.
+          <span className="hidden md:inline">& Founder</span>
         </motion.h1>
-      </div>
-
-      <motion.div 
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="order-1 md:order-2 relative"
-      >
-        <div className="relative z-10 aspect-[4/5] bg-accent-pink/10 rounded-t-[120px] rounded-b-[20px] overflow-hidden border border-black/20 shadow-2xl shadow-accent-pink/5">
-          <img 
-            src="https://res.cloudinary.com/dllugr1kc/image/upload/v1772803817/DSCF4447_otsxpk.jpg" 
-            alt="About Me" 
-            referrerPolicy="no-referrer"
-          />
-        </div>
-        {/* Decorative frame element */}
-        <div className="absolute -inset-4 border border-accent-green/20 rounded-t-[140px] rounded-b-[40px] -z-10 translate-x-2 translate-y-2" />
-        
-        <motion.div 
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 12 }}
-          className="absolute -bottom-8 -left-8 w-36 h-36 bg-accent-green rounded-full flex items-center justify-center border border-black shadow-lg z-20"
-        >
-          <div className="flex flex-col items-center">
-            <span className="text-white font-serif font-bold  text-xl leading-none">Grace</span>
-            <span className="text-white font-serif font-bold text-xl">Shuuya</span>
-          </div>
-        </motion.div>
+        <p className="text-xs md:text-lg text-black/80 max-w-2xl leading-relaxed font-light">
+          Hi, I'm <span className="font-bold text-accent-green">Grace Shuuya</span>. A Namibian-based creative producing aesthetic experiences that reflect my skill and faith. I am passionate about UI Design, Frontend Development, Graphic Design and Videography, overseen by a strategic eye for creative direction.
+        </p>
       </motion.div>
 
-      <div className="order-2 md:order-1">
-        {/* Desktop-only:  */}
-        <div className="hidden md:block mb-6">
-          <motion.span 
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-accent-green font-medium tracking-[0.3em] uppercase text-xs inline-block border-l-2 border-accent-green pl-4"
-          >
-         
-          </motion.span>
-        </div>
-
-        <motion.h1 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="hidden md:block text-5xl md:text-7xl font-serif mt-4 mb-10 leading-[1.1] tracking-tight"
-        >
-          Creative <br />
-          <span className="italic text-accent-green">Executive</span> <br />
-          & Founder.
-        </motion.h1>
-
+      {/* Photo & LinkedIn Sidebar */}
+      <div className="col-span-1 md:col-span-1 flex flex-col gap-3 md:gap-4">
+        {/* Main Photo Block */}
         <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="text-base md:text-lg text-black/80 max-w-md leading-relaxed whitespace-pre-line mb-12 font-light"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="bg-accent-pink/10 border border-black/10 rounded-[25px] md:rounded-[40px] overflow-hidden group relative aspect-square md:aspect-auto flex-1 h-full"
         >
-          Hi, I'm Grace Shuuya.
-          
-          I'm a 24-year-old Namibian creative, born and raised in Windhoek. I have a Bachelor's degree in Software Development, with a passion for the visual side of communication.
-          
-          At my core, I am a Content Creator with a strategic eye for overseeing creative processes, developing concepts, and driving visual or narrative direction within industries like advertising and digital media.
-          
-          My work isn't just aesthetics though! My faith is the foundation of everything I do. As a Christian, my creativity is an extension of my worship. So take a minute to visit my shop - a space where faith and design come together.
-          
-          I've brought all my work under one brand called By Greys Company. It is the home for everything I create, from service provision to product outlets.
-          
-          Thanks for stopping by.
+          <img 
+            src="https://res.cloudinary.com/dllugr1kc/image/upload/v1772275124/o_p9ksap.jpg" 
+            alt="Grace Shuuya" 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            referrerPolicy="no-referrer"
+          />
         </motion.div>
 
-        <div className="flex flex-wrap gap-6 mb-16">
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => setActiveTab('services')}
-            className="group px-10 py-5 bg-black text-white rounded-full border border-accent-pink/30 flex items-center gap-3 hover:shadow-xl hover:shadow-accent-pink/10 transition-all duration-300"
-          >
-            <span className="tracking-widest uppercase text-xs font-bold">View Portfolio</span>
-            <ArrowRight size={18} className="text-accent-pink group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => setActiveTab('shop')}
-            className="px-10 py-5 border border-black rounded-full flex items-center gap-3 hover:bg-accent-pink/20 transition-all duration-300"
-          >
-            <span className="tracking-widest uppercase text-xs font-bold">Visit Shop</span>
-            <ShoppingBag size={18} className="text-accent-green" />
-          </motion.button>
-        </div>
+        {/* LinkedIn Block */}
+        <motion.a 
+          href="https://www.linkedin.com/in/graceshuuya/" 
+          target="_blank"
+          whileHover={{ y: -5 }}
+          className="bg-[#0077b5] text-white rounded-[20px] md:rounded-[30px] p-4 flex items-center justify-between group"
+        >
+          <Linkedin size={24} />
+          <div className="text-right">
+            <div className="text-[10px] md:text-sm font-bold leading-none">Connect</div>
+            <div className="text-[8px] md:text-[10px] uppercase tracking-widest opacity-80">LinkedIn</div>
+          </div>
+          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+        </motion.a>
+      </div>
 
-        {/* Testimonials Section */}
-        <div className="mb-16">
-          <h3 className="text-accent-green font-bold tracking-[0.3em] uppercase text-xs mb-8 border-l-2 border-accent-green pl-4">
-            Testimonials
-          </h3>
-          <div className="flex flex-wrap gap-4">
-            {TESTIMONIALS.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-                className="bg-white border border-black/10 p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow max-w-xs h-fit"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <img 
-                    src={testimonial.avatar} 
-                    alt={testimonial.username} 
-                    className="w-10 h-10 rounded-full border border-accent-green/20"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div>
-                    <div className="text-xs font-bold">{testimonial.username}</div>
-                    <div className="text-[10px] text-accent-green">{testimonial.handle}</div>
-                  </div>
-                </div>
-                <p className="text-xs text-black/70 leading-relaxed italic">
-                  "{testimonial.message}"
-                </p>
-              </motion.div>
-            ))}
+      {/* Portfolio Block */}
+      <motion.div 
+        whileHover={{ y: -5 }}
+        onClick={() => setActiveTab('services')}
+        className="col-span-1 md:col-span-2 bg-white border border-black/10 rounded-[25px] md:rounded-[30px] p-5 md:p-8 cursor-pointer relative overflow-hidden group min-h-[180px] md:min-h-[300px] flex flex-col justify-end"
+      >
+        <div className="absolute top-0 left-0 w-full h-full z-0 opacity-40 group-hover:opacity-60 transition-opacity">
+          <img src="https://res.cloudinary.com/dllugr1kc/image/upload/v1772726336/Company_Profile_cover_knnvmc.png" className="w-full h-full object-cover" alt="Portfolio Preview" />
+        </div>
+        <div className="relative z-10 bg-white/80 backdrop-blur-md p-3 md:p-6 rounded-xl border border-black/5">
+          <Palette className="text-accent-green mb-2 md:mb-4" size={24} />
+          <h3 className="text-lg md:text-2xl font-serif mb-1">Portfolio</h3>
+          <div className="hidden md:block text-xs text-black/60 mb-4">View my work in Design & UI.</div>
+          <div className="flex items-center gap-1 text-accent-green font-bold text-[8px] md:text-xs uppercase tracking-widest">
+            Enter <ArrowRight size={10} />
           </div>
         </div>
+      </motion.div>
 
-        <SocialLinks />
+      {/* Shop Block */}
+      <motion.div 
+        whileHover={{ y: -5 }}
+        onClick={() => setActiveTab('shop')}
+        className="col-span-1 md:col-span-2 bg-accent-pink/20 border border-black/10 rounded-[25px] md:rounded-[30px] p-5 md:p-8 cursor-pointer relative overflow-hidden group min-h-[180px] md:min-h-[300px] flex flex-col justify-end"
+      >
+        <div className="absolute top-0 left-0 w-full h-full z-0 opacity-40 group-hover:opacity-60 transition-opacity">
+          <img src="https://res.cloudinary.com/dllugr1kc/image/upload/v1773451390/Modern_Formal_Invoice_for_Business_Consultant_cmhqgf.png" className="w-full h-full object-cover" alt="Shop Preview" />
+        </div>
+        <div className="relative z-10 bg-white/80 backdrop-blur-md p-3 md:p-6 rounded-xl border border-black/5">
+          <ShoppingBag className="text-accent-pink mb-2 md:mb-4" size={24} />
+          <h3 className="text-lg md:text-2xl font-serif mb-1">Shop</h3>
+          <div className="hidden md:block text-xs text-black/60 mb-4">Faith-based aesthetics.</div>
+          <div className="flex items-center gap-1 text-accent-pink font-bold text-[8px] md:text-xs uppercase tracking-widest">
+            Shop <ArrowRight size={10} />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Christian Community Block */}
+      <motion.div 
+        whileHover={{ y: -5 }}
+        className="col-span-2 md:col-span-3 bg-accent-green text-white border border-black/10 rounded-[30px] p-6 md:p-10 relative overflow-hidden group"
+      >
+        <div className="md:flex gap-10 items-center">
+          <div className="space-y-4 md:space-y-6 flex-1">
+            <h3 className="text-2xl md:text-4xl font-serif">Jesus Unites</h3>
+            <p className="text-white/80 leading-relaxed font-light italic text-xs md:text-base">
+              "My faith is the foundation of everything I do. I've started 'Jesus Unites' as a wholesome, loving Christ-centered community. We host online Bible study, game nights and events. Don't miss the next one!"
+            </p>
+            <div className="grid grid-cols-2 gap-2 md:gap-4 pt-2 md:pt-4">
+              <a href="https://whatsapp.com/channel/0029Vb618yW4SpkJAOFqQw0X" target="_blank" className="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full text-[8px] md:text-xs uppercase tracking-widest font-bold transition-all border border-white/20 text-center flex items-center justify-center">
+                WhatsApp Channel
+              </a>
+              <a href="https://chat.whatsapp.com/FniXtxlkwzgDLXEBZjVE6W?mode=gi_t" target="_blank" className="bg-white text-accent-green px-3 py-2 rounded-full text-[8px] md:text-xs uppercase tracking-widest font-bold transition-all text-center flex items-center justify-center">
+                WhatsApp Group
+              </a>
+              <a href="https://discord.gg/dQkcmKyrq" target="_blank" className="bg-white text-accent-green px-3 py-2 rounded-full text-[8px] md:text-xs uppercase tracking-widest font-bold transition-all text-center flex items-center justify-center">
+                Discord Channel
+              </a>
+              <a href="https://www.tiktok.com/@jesus.unites" target="_blank" className="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full text-[8px] md:text-xs uppercase tracking-widest font-bold transition-all border border-white/20 text-center flex items-center justify-center">
+                TikTok Page
+              </a>
+            </div>
+          </div>
+          <div className="hidden md:block w-1/3">
+            <div className="aspect-square bg-white/10 rounded-[40px] flex items-center justify-center border border-white/20 p-8">
+              <div className="text-center">
+                <span className="block text-5xl font-serif mb-2">2k+</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] opacity-60">WhastApp Followers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Social Media Blocks */}
+      <div className="col-span-2 md:col-span-1 grid grid-cols-4 md:grid-cols-2 gap-2 md:gap-4">
+        {[
+          { icon: <Music size={16} />, url: "https://www.tiktok.com/@kahewa_", handle: "@kahewa_", color: "bg-accent-pink/30" },
+          { icon: <Instagram size={16} />, url: "https://www.instagram.com/iisgreys", handle: "@iisgreys", color: "bg-accent-pink/10" },
+          { icon: <Youtube size={16} />, url: "https://www.youtube.com/@kahewagrace", handle: "@kahewagrace", color: "bg-red-500/10" },
+          { icon: <Twitch size={16} />, url: "https://www.twitch.tv/flah0723", handle: "flah0723", color: "bg-purple-500/10" },
+        ].map((social, i) => (
+          <motion.a
+            key={i}
+            href={social.url}
+            target="_blank"
+            whileHover={{ scale: 1.05 }}
+            className={`${social.color} border border-black/5 rounded-xl p-2 md:p-4 flex flex-col items-center justify-center text-center gap-1 overflow-hidden`}
+          >
+            {social.icon}
+            <div className="text-[8px] md:text-[10px] font-bold leading-none truncate w-full px-1">{social.handle}</div>
+          </motion.a>
+        ))}
+      </div>
+
+      {/* GitHub & TikTok Small Blocks */}
+      <motion.a 
+        href="https://github.com/Kahewa" 
+        target="_blank"
+        whileHover={{ y: -5 }}
+        className="col-span-1 md:col-span-2 bg-black text-white rounded-[25px] md:rounded-[30px] p-5 md:p-8 flex flex-col md:flex-row items-center md:justify-between gap-3 text-center md:text-left"
+      >
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+          <Github size={30} />
+          <div>
+            <h4 className="text-lg md:text-xl font-serif">GitHub</h4>
+            <p className="hidden md:block text-white/60 text-sm italic">My dev side.</p>
+          </div>
+        </div>
+        <ArrowRight size={20} className="text-accent-pink hidden md:block" />
+      </motion.a>
+
+      <motion.a 
+        href="https://www.instagram.com/createdbygreys" 
+        target="_blank"
+        whileHover={{ y: -5 }}
+        className="col-span-1 md:col-span-2 border border-black rounded-[25px] md:rounded-[30px] p-5 md:p-8 flex flex-col md:flex-row items-center md:justify-between bg-white gap-3 text-center md:text-left"
+      >
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+          <Instagram size={30} />
+          <div>
+            <h4 className="text-lg md:text-xl font-serif">Business Instagram</h4>
+            <p className="hidden md:block text-black/60 text-sm italic tracking-tight">@createdbygreys</p>
+          </div>
+        </div>
+        <ArrowRight size={20} className="text-black hidden md:block" />
+      </motion.a>
+
+      <motion.div 
+        whileHover={{ y: -5 }}
+        onClick={() => setActiveTab('rates')}
+        className="col-span-2 md:col-span-4 bg-accent-green/10 border border-black/10 rounded-[25px] md:rounded-[30px] p-5 md:p-6 flex items-center justify-between cursor-pointer group"
+      >
+        <div className="flex items-center gap-4">
+          <div className="bg-accent-green text-white p-3 rounded-xl">
+             <Tag size={20} />
+          </div>
+          <div>
+            <h4 className="text-lg md:text-xl font-serif">View Rates</h4>
+            <p className="text-black/60 text-[10px] md:text-xs">Transparent pricing for all creative services.</p>
+          </div>
+        </div>
+        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+      </motion.div>
+
+    </div>
+
+    {/* Testimonials */}
+    <div className="mt-24">
+      <h3 className="text-accent-green font-bold tracking-[0.3em] uppercase text-xs mb-12 border-l-2 border-accent-green pl-4">
+        Testimonials
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {TESTIMONIALS.map((testimonial, index) => (
+          <motion.div
+            key={testimonial.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + index * 0.1 }}
+            className="bg-white border border-black/10 p-8 rounded-[30px] shadow-sm hover:shadow-md transition-shadow relative"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <img 
+                src={testimonial.avatar} 
+                alt={testimonial.username} 
+                className="w-12 h-12 rounded-full border border-accent-green/20"
+                referrerPolicy="no-referrer"
+              />
+              <div>
+                <div className="text-sm font-bold">{testimonial.username}</div>
+                <div className="text-xs text-accent-green">{testimonial.handle}</div>
+              </div>
+            </div>
+            <p className="text-sm text-black/70 leading-relaxed italic">
+              "{testimonial.message}"
+            </p>
+          </motion.div>
+        ))}
       </div>
     </div>
   </motion.div>
@@ -611,6 +784,136 @@ const ServicesView = () => {
   );
 };
 
+const RatesView: React.FC = () => {
+  const [activeSection, setActiveSection] = useState<'graphics' | 'video' | 'web'>('graphics');
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="pt-32 pb-20 px-6 max-w-7xl mx-auto"
+    >
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-serif mb-4">Service Rates</h2>
+        <p className="text-black/60">Quality work tailored to your vision</p>
+      </div>
+
+      <div className="flex justify-center gap-4 md:gap-8 mb-12 flex-wrap">
+        {[
+          { id: 'graphics', label: 'Graphic' },
+          { id: 'video', label: 'Video' },
+          { id: 'web', label: 'UI Design' },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveSection(tab.id as any)}
+            className={`px-6 py-2 rounded-full border border-black text-sm uppercase tracking-widest transition-all ${
+              activeSection === tab.id 
+                ? 'bg-black text-white border-accent-pink/50 shadow-[0_0_10px_rgba(255,194,232,0.2)]' 
+                : 'hover:bg-accent-pink'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="bg-white border border-black/10 rounded-[30px] overflow-hidden shadow-sm">
+        <div className="p-8 border-b border-black/5 bg-accent-green/5 flex justify-between items-start">
+          <div>
+            <h3 className="text-2xl font-serif capitalize">
+              {activeSection === 'web' ? 'Web Development & UI' : activeSection + ' Services'}
+            </h3>
+            <p className="text-xs text-black/40 mt-1">
+              Consultation: {activeSection === 'web' ? 'N$150' : 'N$80'}
+            </p>
+            {activeSection === 'video' && (
+              <div className="mt-4 p-4 bg-white/50 rounded-xl border border-black/5 text-[10px] space-y-1 text-black/60">
+                <p className="font-bold text-black uppercase tracking-widest">For filming content for the client:</p>
+                <p>• Callout Fee: N$80/hr + Price of preferred duration</p>
+                <p>• Equipment: DJI Osmo Nano</p>
+              </div>
+            )}
+          </div>
+          <Tag className="text-accent-green opacity-20" size={40} />
+        </div>
+        
+        <div className="w-full">
+          {RATES[activeSection].map((group, gIdx) => (
+            <div key={gIdx}>
+              <div className="bg-black/[0.03] px-6 md:px-8 py-3 text-[10px] uppercase tracking-widest font-bold text-black/40 border-y border-black/5">
+                {group.title}
+              </div>
+              
+              {/* Mobile List View */}
+              <div className="md:hidden divide-y divide-black/5">
+                {group.items.map((item: any, idx: number) => (
+                  <div key={idx} className="p-6 space-y-2 hover:bg-accent-green/[0.02] transition-colors">
+                    <div className="flex justify-between items-start gap-4">
+                      <h4 className="font-serif text-lg leading-tight">{item.service}</h4>
+                      <div className="text-right">
+                        <div className="font-bold text-accent-green whitespace-nowrap">
+                          {item.price.includes('N$') || item.price.includes('Consultation') || item.price.includes('Quote') ? item.price : `N$${item.price}`}
+                        </div>
+                        {activeSection === 'video' && item.raw && (
+                          <span className="block text-[9px] text-black/30 font-normal mt-1 uppercase tracking-tighter">
+                            Raw: N${item.raw}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-xs text-black/60 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View */}
+              <table className="hidden md:table w-full text-left">
+                <tbody className="divide-y divide-black/5">
+                  {group.items.map((item: any, idx: number) => (
+                    <tr key={idx} className="hover:bg-accent-green/[0.02] transition-colors">
+                      <td className="px-8 py-5 font-serif text-lg leading-tight w-1/3">{item.service}</td>
+                      <td className="px-8 py-5 text-sm text-black/60">{item.desc}</td>
+                      <td className="px-8 py-5 text-right font-bold text-accent-green whitespace-nowrap">
+                        {item.price.includes('N$') || item.price.includes('Consultation') || item.price.includes('Quote') ? item.price : `N$${item.price}`}
+                        {activeSection === 'video' && item.raw && (
+                          <span className="block text-[10px] text-black/30 font-normal">
+                            Raw Content: N${item.raw}
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-6 bg-accent-pink/5 rounded-2xl text-[10px] space-y-2 text-black/60 border border-black/5">
+          <span className="font-bold text-black uppercase tracking-widest block mb-2">Payment Agreement</span>
+          {activeSection === 'web' ? (
+            <p>• A N$600 set-up fee is required for all Development services.</p>
+          ) : (
+            <>
+              <p>• Under N$400: To be paid in full before starting the project.</p>
+              <p>• Over N$400: 50% deposit before starting, and final 50% upon delivery.</p>
+            </>
+          )}
+          <p>• Time-Frame: Reliant on project specification.</p>
+        </div>
+        <div className="p-6 bg-accent-green/5 rounded-2xl text-[10px] space-y-2 text-black/60 border border-black/5">
+          <span className="font-bold text-black uppercase tracking-widest block mb-2">Policy</span>
+          <p>• Refund: 30% is charged on {activeSection === 'web' ? 'setup' : 'all'} refunds.</p>
+          <p>• No refunds for finished projects or after service is delivered and paid for.</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const ShopView = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -698,6 +1001,7 @@ export default function App() {
           {activeTab === 'home' && <HomeView key="home" setActiveTab={setActiveTab} />}
           {activeTab === 'services' && <ServicesView key="services" />}
           {activeTab === 'shop' && <ShopView key="shop" />}
+          {activeTab === 'rates' && <RatesView key="rates" />}
         </AnimatePresence>
       </main>
 
