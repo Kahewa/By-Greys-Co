@@ -412,7 +412,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => (
   <motion.div 
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className="pt-12 md:pt-32 pb-20 px-3 md:px-6 max-w-7xl mx-auto relative overflow-hidden"
+    className="pt-36 md:pt-32 pb-20 px-3 md:px-6 max-w-7xl mx-auto relative overflow-hidden"
   >
     {/* Decorative background elements */}
     <div className="absolute top-20 right-0 w-64 h-64 bg-accent-pink/10 blur-3xl rounded-full -z-10" />
@@ -702,7 +702,7 @@ const ServicesView = () => {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="pt-32 pb-20 px-6 max-w-7xl mx-auto"
+      className="pt-36 md:pt-32 pb-20 px-6 max-w-7xl mx-auto"
     >
       <div className="text-center mb-16">
         <h2 className="text-4xl font-serif mb-4">Created By Greys</h2>
@@ -791,7 +791,7 @@ const RatesView: React.FC = () => {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="pt-32 pb-20 px-6 max-w-7xl mx-auto"
+      className="pt-36 md:pt-32 pb-20 px-6 max-w-7xl mx-auto"
     >
       <div className="text-center mb-16">
         <h2 className="text-4xl font-serif mb-4">Service Rates</h2>
@@ -922,7 +922,7 @@ const ShopView = () => {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="pt-32 pb-20 px-6 max-w-7xl mx-auto"
+      className="pt-36 md:pt-32 pb-20 px-6 max-w-7xl mx-auto"
     >
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
         <div>
