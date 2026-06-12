@@ -572,7 +572,7 @@ const ProductDetailModal = ({
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative bg-[#FDFCF8] border border-black/10 p-5 md:p-8 max-w-2xl w-full rounded-[25px] md:rounded-[35px] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            className="relative bg-[#FDFCF8] border border-black/10 p-6 md:p-8 max-w-md w-full rounded-[25px] md:rounded-[30px] shadow-2xl overflow-hidden flex flex-col max-h-[85vh] text-left"
           >
             {/* Close button */}
             <button 
@@ -584,84 +584,68 @@ const ProductDetailModal = ({
             </button>
 
             {/* Content Container (Scrollable) */}
-            <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin mt-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+            <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin mt-6">
+              <div className="space-y-5">
                 
-                {/* Product Image Panel */}
-                <div className="space-y-3">
-                  <div className="aspect-[4/5] w-full rounded-2xl overflow-hidden border border-black/5 shadow-inner bg-black/[0.02] relative">
-                    <img 
-                      src={product.image} 
-                      alt={displayName} 
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
+                {/* Product Info Panel */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] md:text-xs font-bold text-accent-green uppercase tracking-widest">
+                      {product.id < 200 ? "Haven By Greys" : "Crowned By Greys"}
+                    </span>
                     {isDemo && (
-                      <span className="absolute top-3 left-3 bg-[#db6b86] text-white text-[8px] md:text-[9px] tracking-widest uppercase font-bold px-2 py-0.5 rounded-full border border-white/20 shadow-sm">
-                        Showcase Item
+                      <span className="bg-[#db6b86] text-white text-[8px] tracking-widest uppercase font-bold px-2 py-0.5 rounded-full border border-white/20 shadow-sm">
+                        Showcase
                       </span>
                     )}
                   </div>
-                  <div className="text-[10px] uppercase text-black/40 text-center tracking-widest leading-relaxed">
                   
+                  <h3 className="text-xl md:text-2xl font-serif text-black leading-tight mb-2">
+                    {displayName}
+                  </h3>
+                  
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-2xl font-bold text-accent-green">{product.price}</span>
                   </div>
-                </div>
-
-                {/* Product Info Panel */}
-                <div className="flex flex-col justify-between h-full space-y-4 text-left">
-                  <div>
-                    <span className="text-[10px] md:text-sm font-bold text-accent-green uppercase tracking-widest block mb-1">
-                      {product.id < 200 ? "Haven By Greys" : "Crowned By Greys"}
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-serif text-black leading-tight mb-2">
-                      {displayName}
-                    </h3>
-                    <div className="flex items-baseline gap-2 mb-4">
-                      <span className="text-2xl font-bold text-accent-green">{product.price}</span>
-                      {product.price !== "N$0.00" && (
-                        <span className="text-xs text-black/40 uppercase tracking-wider"></span>
-                      )}
-                    </div>
-                    
-                    <div className="border-t border-black/5 pt-4 mb-4">
-                      <h4 className="text-[10px] uppercase tracking-widest text-black/50 font-bold mb-2">About Product</h4>
-                      <p className="text-xs md:text-sm text-black/85 font-light leading-relaxed">
-                        {product.description || ""}
-                      </p>
-                    </div>
-
-                    {product.features && product.features.length > 0 && (
-                      <div className="border-t border-black/5 pt-4">
-                        <h4 className="text-[10px] uppercase tracking-widest text-black/50 font-bold mb-2.5">More Info</h4>
-                        <ul className="space-y-2 text-xs text-black/75 font-light">
-                          {product.features.map((feature, index) => (
-                            <li key={index} className="flex items-start gap-2">
-                              <span className="text-accent-pink font-bold mt-0.5">•</span>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  
+                  <div className="border-t border-black/5 pt-4 mb-4">
+                    <h4 className="text-[10px] uppercase tracking-widest text-[#db6b86] font-bold mb-2">About Product</h4>
+                    <p className="text-xs md:text-sm text-black/85 font-light leading-relaxed">
+                      {product.description || ""}
+                    </p>
                   </div>
+
+                  {product.features && product.features.length > 0 && (
+                    <div className="border-t border-black/5 pt-4">
+                      <h4 className="text-[10px] uppercase tracking-widest text-[#db6b86] font-bold mb-2.5">More Info</h4>
+                      <ul className="space-y-2 text-xs text-black/75 font-light">
+                        {product.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <span className="text-accent-pink font-bold mt-0.5">•</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
 
               </div>
             </div>
 
             {/* Bottom Actions Row */}
-            <div className="pt-5 border-t border-black/5 flex flex-col sm:flex-row gap-3 mt-6">
+            <div className="pt-5 border-t border-black/5 flex flex-col gap-3 mt-6">
               <button
                 onClick={handlePlaceOrder}
                 type="button"
-                className="flex-1 py-3.5 bg-black text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-accent-green transition-colors text-center order-1 sm:order-2"
+                className="w-full py-3.5 bg-black text-white hover:bg-[#db6b86] rounded-full font-bold uppercase tracking-widest text-xs transition-colors text-center cursor-pointer"
               >
                 Place Order via WhatsApp
               </button>
               <button
                 onClick={onClose}
                 type="button"
-                className="flex-1 py-3.5 border border-black/10 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#db6b86]/10 text-black/70 hover:text-black transition-colors text-center order-2 sm:order-1"
+                className="w-full py-3.5 border border-black/10 hover:bg-[#db6b86]/10 text-black/70 hover:text-black rounded-full font-bold uppercase tracking-widest text-xs transition-colors text-center cursor-pointer"
               >
                 Continue Viewing
               </button>
