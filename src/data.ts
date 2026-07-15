@@ -122,5 +122,10 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
         ]
       }
     ]
+  },
+  videoFilming: {
+    title: "For filming content for the client:",
+    calloutFee: "Callout Fee: N$80.00/hr + Price of preferred duration",
+    equipment: "Equipment: DJI Osmo Nano"
   }
 };

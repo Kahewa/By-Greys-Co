@@ -24,7 +24,9 @@ import {
   DollarSign,
   Pencil,
   X,
-  Check
+  Check,
+  ArrowUp,
+  ArrowDown
 } from 'lucide-react';
 import { PortfolioSettings, Testimonial, PortfolioItem, RateGroup, RateItem, ServiceTab } from '../types';
 
@@ -420,6 +422,34 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
   const handleCancelEditRateItem = () => {
     setEditingRateItemId(null);
     setEditingRateItemData(null);
+  };
+
+  const handleMoveRateGroup = (groupIdx: number, direction: 'up' | 'down') => {
+    const groups = [...(localSettings.rates[selectedRateCategory] || [])];
+    if (direction === 'up' && groupIdx > 0) {
+      const temp = groups[groupIdx];
+      groups[groupIdx] = groups[groupIdx - 1];
+      groups[groupIdx - 1] = temp;
+    } else if (direction === 'down' && groupIdx < groups.length - 1) {
+      const temp = groups[groupIdx];
+      groups[groupIdx] = groups[groupIdx + 1];
+      groups[groupIdx + 1] = temp;
+    } else {
+      return;
+    }
+
+    const updatedRates = {
+      ...localSettings.rates,
+      [selectedRateCategory]: groups
+    };
+
+    const updated = {
+      ...localSettings,
+      rates: updatedRates
+    };
+
+    setLocalSettings(updated);
+    triggerSave(updated);
   };
 
   // Unauthenticated view
@@ -1167,15 +1197,43 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
                           </button>
                         </div>
                       ) : (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-3">
                           <span className="font-bold text-[10px] uppercase tracking-widest text-black/60">{group.title}</span>
-                          <button
-                            onClick={() => handleStartEditRateGroup(groupIdx, group.title)}
-                            className="text-black/40 hover:text-black hover:bg-black/5 p-1 rounded-lg transition-all"
-                            title="Edit Group Title"
-                          >
-                            <Pencil size={11} />
-                          </button>
+                          <div className="flex items-center gap-1 border-r border-black/10 pr-1 shrink-0">
+                            <button
+                              onClick={() => handleStartEditRateGroup(groupIdx, group.title)}
+                              className="text-black/40 hover:text-black hover:bg-black/5 p-1 rounded-lg transition-all"
+                              title="Edit Group Title"
+                            >
+                              <Pencil size={11} />
+                            </button>
+                          </div>
+                          <div className="flex items-center gap-1 shrink-0">
+                            <button
+                              onClick={() => handleMoveRateGroup(groupIdx, 'up')}
+                              disabled={groupIdx === 0}
+                              className={`p-1 rounded-lg transition-all border ${
+                                groupIdx === 0 
+                                  ? 'text-black/10 border-transparent cursor-not-allowed' 
+                                  : 'text-black/40 hover:text-black hover:bg-black/5 border-black/5 bg-white'
+                              }`}
+                              title="Move Group Up"
+                            >
+                              <ArrowUp size={11} />
+                            </button>
+                            <button
+                              onClick={() => handleMoveRateGroup(groupIdx, 'down')}
+                              disabled={groupIdx === (localSettings.rates[selectedRateCategory]?.length || 0) - 1}
+                              className={`p-1 rounded-lg transition-all border ${
+                                groupIdx === (localSettings.rates[selectedRateCategory]?.length || 0) - 1
+                                  ? 'text-black/10 border-transparent cursor-not-allowed' 
+                                  : 'text-black/40 hover:text-black hover:bg-black/5 border-black/5 bg-white'
+                              }`}
+                              title="Move Group Down"
+                            >
+                              <ArrowDown size={11} />
+                            </button>
+                          </div>
                         </div>
                       )}
                       <button
@@ -1322,11 +1380,11 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
                     </div>
                   </div>
                 ))}
-
-                {(!localSettings.rates[selectedRateCategory] || localSettings.rates[selectedRateCategory].length === 0) && (
-                  <div className="p-12 text-center text-xs text-black/40 bg-primary/10 rounded-2xl border border-black/5">No groups configured for this pricing category. Create one above!</div>
-                )}
               </div>
+
+              {(!localSettings.rates[selectedRateCategory] || localSettings.rates[selectedRateCategory].length === 0) && (
+                <div className="p-12 text-center text-xs text-black/40 bg-primary/10 rounded-2xl border border-black/5">No groups configured for this pricing category. Create one above!</div>
+              )}
             </div>
           )}
         </div>

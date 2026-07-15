@@ -935,7 +935,8 @@ const ServicesView = ({ portfolioItems }: { portfolioItems: PortfolioItem[] }) =
   );
 };
 
-const RatesView: React.FC<{ rates: Record<string, RateGroup[]> }> = ({ rates }) => {
+const RatesView: React.FC<{ settings: PortfolioSettings }> = ({ settings }) => {
+  const { rates } = settings;
   const [activeSection, setActiveSection] = useState<'graphics' | 'video' | 'web'>('graphics');
 
   return (
@@ -975,15 +976,10 @@ const RatesView: React.FC<{ rates: Record<string, RateGroup[]> }> = ({ rates }) 
             <h3 className="text-2xl font-serif capitalize">
               {activeSection === 'web' ? 'Web Development Services' : activeSection === 'graphics' ? 'Graphic Services' : activeSection + ' Services'}
             </h3>
-            <p className="text-xs text-black/40 mt-1">
-              Consultation: {activeSection === 'web' ? 'N$150' : 'N$80'}
-            </p>
-            {activeSection === 'video' && (
-              <div className="mt-4 p-4 bg-white/50 rounded-xl border border-black/5 text-[10px] space-y-1 text-black/60">
-                <p className="font-bold text-black uppercase tracking-widest">For filming content for the client:</p>
-                <p>• Callout Fee: N$80.00/hr + Price of preferred duration</p>
-                <p>• Equipment: DJI Osmo Nano</p>
-              </div>
+            {activeSection === 'web' && (
+              <p className="text-xs text-black/40 mt-1">
+                Consultation: N$150
+              </p>
             )}
           </div>
           <Tag className="text-accent-green opacity-20" size={40} />
@@ -1193,7 +1189,7 @@ export default function App() {
         <AnimatePresence mode="wait">
           {activeTab === 'home' && <HomeView key="home" setActiveTab={setActiveTab} settings={settings} />}
           {activeTab === 'services' && <ServicesView key="services" portfolioItems={settings.portfolioItems} />}
-          {activeTab === 'rates' && <RatesView key="rates" rates={settings.rates} />}
+          {activeTab === 'rates' && <RatesView key="rates" settings={settings} />}
           {activeTab === 'admin' && <AdminView key="admin" settings={settings} onSave={handleSaveSettings} onClose={() => setActiveTab('home')} />}
         </AnimatePresence>
       </main>

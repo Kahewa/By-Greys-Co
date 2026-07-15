@@ -56,4 +56,9 @@ export interface PortfolioSettings {
   testimonials: Testimonial[];
   portfolioItems: PortfolioItem[];
   rates: Record<string, RateGroup[]>;
+  videoFilming?: {
+    title: string;
+    calloutFee: string;
+    equipment: string;
+  };
 }
