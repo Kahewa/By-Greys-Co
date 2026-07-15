@@ -1,0 +1,126 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { PortfolioSettings } from './types';
+
+export const DEFAULT_SETTINGS: PortfolioSettings = {
+  bio: "Hi, I'm Grace Shuuya. A Namibian-based Software Development Degree holder, who is passionate about producing aesthetic experiences that reflect my skill and faith. I specialize in UI Design, Web Development, Canva Creation and Videography, overseen by a strategic eye for creative direction.",
+  profilePhoto: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772275124/o_p9ksap.jpg",
+  socials: {
+    instagram: "https://www.instagram.com/iisgreys/",
+    tiktok: "https://www.tiktok.com/@kahewa_",
+    linkedin: "https://www.linkedin.com/in/graceshuuya/",
+    github: "https://github.com/Kahewa",
+    freelanceInstagram: "https://www.instagram.com/contented.bg"
+  },
+  jesusUnite: {
+    description: "My faith is the foundation of everything I do. I've started 'Jesus Unites' as a wholesome, loving Christ-centered community. We host online Bible study, game nights and events. Don't miss the next one!",
+    whatsappChannel: "https://whatsapp.com/channel/0029Vb618yW4SpkJAOFqQw0X",
+    whatsappGroup: "https://chat.whatsapp.com/FniXtxlkwzgDLXEBZjVE6W?mode=gi_t",
+    discordChannel: "https://discord.gg/dQkcmKyrq",
+    tiktokPage: "https://www.tiktok.com/@jesus.unites",
+    followersCount: "2k+"
+  },
+  testimonials: [
+    {
+      id: 1,
+      username: "Tea Laboratories",
+      handle: "www.tea-labs.com",
+      message: "I had gotten the By Grace Co. number from a mutual contact. I reached out to her to help me with a project, and her service from the beginning was amazing. She is very creative, her outlook on the project gave me the inspiration I did not know I needed. She is a professional, always providing timely updates and I was not left wondering what happened or if there was progress. Overall, very kind and very nice to work with. I would highly recommend getting work done by Grace. ☺️✨",
+      avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776631921/Screenshot_2026-04-19_224257_wzwysf.png"
+    },
+    {
+      id: 2,
+      username: "STA Desserts",
+      handle: "@sta.desserts",
+      message: "Working with this designer for my business, STA Desserts, was such a refreshing experience. She created Valentine’s special price list posters for me, and I genuinely couldn’t have asked for better results. The designs were not only visually beautiful, but they also felt intentional, thoughtful, and truly human. In a time where so much design feels automated or AI-generated, her work stood out in the best way. Every detail reflected creativity, care, and a clear understanding of my brand. She was able to take my ideas and turn them into something elegant, eye-catching, and perfectly suited for my business. I highly recommend her to anyone looking for authentic, high-quality design work that actually feels personal and unique.",
+      avatar: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632045/WhatsApp_Image_2026-04-19_at_22.43.12_zy6efs.jpg"
+    }
+  ],
+  portfolioItems: [
+    // Graphic Design
+    { id: 1, title: "PDF Document", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772726336/Company_Profile_cover_knnvmc.png", link: "#", type: 'image' },
+    { id: 2, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364319/NameTag_xk7uth.png", link: "#", type: 'image' },
+    { id: 3, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364406/namib_cp5wqq.png", link: "#", type: 'image' },
+    { id: 4, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364323/NamibNest_Logo_bok2wq.png", link: "#", type: 'image' },
+    { id: 5, title: "Business Card", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448658/FRONT_iyjhfx.png", link: "#", type: 'image' },
+    { id: 6, title: "Logo Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448605/Black_hylkt9.png", link: "#", type: 'image' },
+    { id: 7, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364338/Beige_Professional_Self_Employed_Business_Services_Pitch_Flyer_A4_zhm7ny.png", link: "#", type: 'image' },
+    { id: 8, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448588/model_ujimaw.png", link: "#", type: 'image' },
+    { id: 9, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448512/Yellow_and_Pink_Watercolour_Pets_Kitty_Party_Invitation_sruupa.png", link: "#", type: 'image' },
+    { id: 10, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364320/25_Nov_Agenda_Drop_gdkwyi.png", link: "#", type: 'image' },
+    { id: 11, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
+    { id: 12, title: "Invitations", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448512/Yellow_and_Pink_Watercolour_Pets_Kitty_Party_Invitation_sruupa.png", link: "#", type: 'image' },
+    { id: 13, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364294/Modern_Daily_Podcast_YouTube_Thumbnail_eloeom.png", link: "#", type: 'image' },
+    { id: 14, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
+    { id: 15, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364361/Beige_White_and_Blue_Scrapbook_Style_Personal_Desktop_Wallpaper_t0it74.png", link: "#", type: 'image' },
+
+    // Video
+    { id: 16, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989031/3_jivvyf.png", link: "https://www.instagram.com/reel/DXbyVdADBlA/?igsh=b3hjeXdkZ2F1d3d3", type: 'video' },
+    { id: 17, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
+    { id: 18, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
+
+    // UI Design (Web Development)
+    { id: 19, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' }
+  ],
+  rates: {
+    graphics: [
+      {
+        title: "Graphic Design Services",
+        items: [
+          { service: "Basic Creative", desc: "Simple design structures - Single product ads | Name tags | ETC", price: "60.00" },
+          { service: "Thumbnails", desc: "TikTok | IG Reels | Reel Shorts | YouTube | IG Story take-over covers", price: "130.00" },
+          { service: "Invitations and Letters", desc: "Graduation | Wedding | Party | Love letters | ETC", price: "150.00" },
+          { service: "Advanced Creative", desc: "Product/Service ads | Pricelists | Book covers | Info posts | Event Posters | ETC", price: "180.00" },
+          { service: "Logo Design", desc: "New Designs | Old logo refinement", price: "200.00" }
+        ]
+      },
+      {
+        title: "PDF Documents (Invitations/Catalogues/Business Profiles)",
+        items: [
+          { service: "One Page", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "200.00" },
+          { service: "Two Pages", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "380.00" },
+          { service: "Three Pages", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "550.00" },
+          { service: "More Pages", desc: "Over 4 pages - Consultation needed", price: "Quote based" }
+        ]
+      },
+      {
+        title: "Graphic Design Packages",
+        items: [
+          { service: "Logo Design Pack", desc: "Logo (Light+Dark Mode) + Business Cards + Email Banner", price: "550.00" },
+          { service: "Party Pack", desc: "2 Page PDF Invitation + 1 Page PDF Wishlist + GRWM reel", price: "650.00" },
+          { service: "Start-up Business Pack", desc: "Logo Design Pack + x2 Advanced Creatives + 3 Page PDF Catalogue", price: "1000.00" },
+          { service: "Wedding Pack", desc: "3 Page PDF Invitation + Bridesmaid/Groomsman cards + 5 day Countdown", price: "1,300.00" },
+          { service: "Business Pack", desc: "Logo Design Pack | 2 Page Company CI Doc | 5 Page Company Profile", price: "2,250.00" }
+        ]
+      }
+    ],
+    video: [
+      {
+        title: "Video Editing Services",
+        items: [
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "200.00", rawText: "If raw content is over 5min = N$300" },
+          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "390.00", rawText: "If raw content is over 10min = N$490" },
+          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "500.00", rawText: "If raw content is over 20min = N$600" },
+          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "650.00", rawText: "If raw content is over 25min = N$750" },
+          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "750.00", rawText: "If raw content is over 40min = N$850" },
+          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "900.00", rawText: "If raw content is over 1hr = N$1050" },
+          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "950.00", rawText: "If raw content is over 40min = N$1050" },
+          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "1200.00", rawText: "If raw content is over 1hr = N$1350" }
+        ]
+      }
+    ],
+    web: [
+      {
+        title: "Web Development & Design",
+        items: [
+          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "Starting Price - N$1500.00" },
+          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "Starting Price - N$1800.00" },
+          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "Starting Price - N$4500" }
+        ]
+      }
+    ]
+  }
+};

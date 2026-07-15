@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "PortfolioSettings": {
+      "title": "PortfolioSettings",
+      "description": "The complete customizable settings and content details for Grace Shuuya's portfolio website.",
+      "type": "object",
+      "properties": {
+        "bio": {
+          "type": "string",
+          "description": "Biography description rendered on the homepage introduction card."
+        },
+        "profilePhoto": {
+          "type": "string",
+          "description": "The URL of the primary profile photo."
+        },
+        "socials": {
+          "type": "object",
+          "description": "Social media URL mappings for LinkedIn, Instagram, TikTok, Freelance Instagram, and GitHub."
+        },
+        "jesusUnite": {
+          "type": "object",
+          "description": "Content description and invitation links for the Jesus Unites section."
+        },
+        "testimonials": {
+          "type": "array",
+          "description": "List of user-provided testimonials, containing company/person name, handle/website, review message, and avatar image URL."
+        },
+        "portfolioItems": {
+          "type": "array",
+          "description": "Dynamic portfolio items categorised under graphic, video, and ui sections."
+        },
+        "rates": {
+          "type": "object",
+          "description": "Service categories and pricing packages structure."
+        }
+      },
+      "required": [
+        "bio",
+        "profilePhoto",
+        "socials",
+        "jesusUnite",
+        "testimonials",
+        "portfolioItems",
+        "rates"
+      ]
+    }
+  },
+  "firestore": {
+    "/settings/{settingsId}": {
+      "schema": "PortfolioSettings",
+      "description": "Stores global app settings documents, specifically 'portfolio' representing all dynamic settings."
+    }
+  }
+}

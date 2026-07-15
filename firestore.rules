@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net (default deny catch-all)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Settings collection access rules
+    match /settings/{settingsId} {
+      // Anyone can read the settings to view the portfolio contents
+      allow read: if true;
+
+      // Allow write access to configure the portfolio from the admin console
+      allow write: if true;
+    }
+  }
+}
