@@ -1075,6 +1075,26 @@ export default function App() {
   const [settings, setSettings] = useState<PortfolioSettings>(DEFAULT_SETTINGS);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Secret 4-click trigger state tracking
+  const [adminClickCount, setAdminClickCount] = useState(0);
+  const [lastClickTime, setLastClickTime] = useState(0);
+
+  const handleAdminTriggerClick = () => {
+    const now = Date.now();
+    if (now - lastClickTime > 2000) {
+      setAdminClickCount(1);
+    } else {
+      const nextCount = adminClickCount + 1;
+      if (nextCount >= 4) {
+        setActiveTab('admin');
+        setAdminClickCount(0);
+      } else {
+        setAdminClickCount(nextCount);
+      }
+    }
+    setLastClickTime(now);
+  };
+
   // Keyboard shortcut listener for secret admin login (Ctrl + Shift + A)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -1205,8 +1225,8 @@ export default function App() {
           <p 
             id="secret-admin-trigger"
             className="text-[10px] uppercase tracking-widest text-black/40 cursor-pointer select-none"
-            onDoubleClick={() => setActiveTab('admin')}
-            title="Double click to access settings console"
+            onClick={handleAdminTriggerClick}
+            title="Click 4 times to access settings console"
           >
             © 2026 By Grace Company. All rights reserved.
           </p>

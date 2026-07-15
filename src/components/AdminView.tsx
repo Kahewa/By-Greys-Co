@@ -21,7 +21,10 @@ import {
   Heart,
   Share2,
   FileText,
-  DollarSign
+  DollarSign,
+  Pencil,
+  X,
+  Check
 } from 'lucide-react';
 import { PortfolioSettings, Testimonial, PortfolioItem, RateGroup, RateItem, ServiceTab } from '../types';
 
@@ -80,6 +83,19 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
     price: '',
     rawText: ''
   });
+
+  // Editing states for existing content
+  const [editingTestimonialId, setEditingTestimonialId] = useState<number | null>(null);
+  const [editingTestimonialData, setEditingTestimonialData] = useState<Testimonial | null>(null);
+
+  const [editingPortfolioId, setEditingPortfolioId] = useState<number | null>(null);
+  const [editingPortfolioData, setEditingPortfolioData] = useState<PortfolioItem | null>(null);
+
+  const [editingRateGroupId, setEditingRateGroupId] = useState<number | null>(null);
+  const [editingRateGroupTitle, setEditingRateGroupTitle] = useState<string>('');
+
+  const [editingRateItemId, setEditingRateItemId] = useState<{ groupIdx: number; itemIdx: number } | null>(null);
+  const [editingRateItemData, setEditingRateItemData] = useState<RateItem | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -290,6 +306,120 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
     };
     setLocalSettings(updated);
     triggerSave(updated);
+  };
+
+  // Editing logic handlers
+  const handleStartEditTestimonial = (testimonial: Testimonial) => {
+    setEditingTestimonialId(testimonial.id);
+    setEditingTestimonialData({ ...testimonial });
+  };
+
+  const handleSaveEditTestimonial = () => {
+    if (!editingTestimonialData) return;
+    if (!editingTestimonialData.username || !editingTestimonialData.message) {
+      alert('Name and review message are required.');
+      return;
+    }
+    const updatedList = localSettings.testimonials.map(t => 
+      t.id === editingTestimonialId ? editingTestimonialData : t
+    );
+    const updated = {
+      ...localSettings,
+      testimonials: updatedList
+    };
+    setLocalSettings(updated);
+    triggerSave(updated);
+    setEditingTestimonialId(null);
+    setEditingTestimonialData(null);
+  };
+
+  const handleCancelEditTestimonial = () => {
+    setEditingTestimonialId(null);
+    setEditingTestimonialData(null);
+  };
+
+  const handleStartEditPortfolio = (item: PortfolioItem) => {
+    setEditingPortfolioId(item.id);
+    setEditingPortfolioData({ ...item });
+  };
+
+  const handleSaveEditPortfolio = () => {
+    if (!editingPortfolioData) return;
+    if (!editingPortfolioData.title || !editingPortfolioData.thumbnail) {
+      alert('Title and thumbnail URL are required.');
+      return;
+    }
+    const updatedList = localSettings.portfolioItems.map(p => 
+      p.id === editingPortfolioId ? editingPortfolioData : p
+    );
+    const updated = {
+      ...localSettings,
+      portfolioItems: updatedList
+    };
+    setLocalSettings(updated);
+    triggerSave(updated);
+    setEditingPortfolioId(null);
+    setEditingPortfolioData(null);
+  };
+
+  const handleCancelEditPortfolio = () => {
+    setEditingPortfolioId(null);
+    setEditingPortfolioData(null);
+  };
+
+  const handleStartEditRateGroup = (groupIdx: number, currentTitle: string) => {
+    setEditingRateGroupId(groupIdx);
+    setEditingRateGroupTitle(currentTitle);
+  };
+
+  const handleSaveEditRateGroup = (groupIdx: number) => {
+    if (!editingRateGroupTitle.trim()) return;
+    const updatedRates = { ...localSettings.rates };
+    updatedRates[selectedRateCategory][groupIdx].title = editingRateGroupTitle;
+    const updated = {
+      ...localSettings,
+      rates: updatedRates
+    };
+    setLocalSettings(updated);
+    triggerSave(updated);
+    setEditingRateGroupId(null);
+    setEditingRateGroupTitle('');
+  };
+
+  const handleCancelEditRateGroup = () => {
+    setEditingRateGroupId(null);
+    setEditingRateGroupTitle('');
+  };
+
+  const handleStartEditRateItem = (groupIdx: number, itemIdx: number, item: RateItem) => {
+    setEditingRateItemId({ groupIdx, itemIdx });
+    setEditingRateItemData({ ...item });
+  };
+
+  const handleSaveEditRateItem = (groupIdx: number, itemIdx: number) => {
+    if (!editingRateItemData) return;
+    if (!editingRateItemData.service || !editingRateItemData.price) {
+      alert('Service name and price are required.');
+      return;
+    }
+    const updatedRates = { ...localSettings.rates };
+    const group = { ...updatedRates[selectedRateCategory][groupIdx] };
+    group.items = group.items.map((item, i) => i === itemIdx ? editingRateItemData : item);
+    updatedRates[selectedRateCategory][groupIdx] = group;
+
+    const updated = {
+      ...localSettings,
+      rates: updatedRates
+    };
+    setLocalSettings(updated);
+    triggerSave(updated);
+    setEditingRateItemId(null);
+    setEditingRateItemData(null);
+  };
+
+  const handleCancelEditRateItem = () => {
+    setEditingRateItemId(null);
+    setEditingRateItemData(null);
   };
 
   // Unauthenticated view
@@ -663,27 +793,96 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
                 <span className="font-bold text-[10px] uppercase tracking-widest text-black/50 block">Active Testimonials ({localSettings.testimonials.length})</span>
                 <div className="divide-y divide-black/5 bg-primary/20 rounded-2xl border border-black/5 overflow-hidden">
                   {localSettings.testimonials.map((t) => (
-                    <div key={t.id} className="p-4 flex items-start justify-between gap-4">
-                      <div className="flex gap-3">
-                        <img 
-                          src={t.avatar} 
-                          alt={t.username} 
-                          className="w-10 h-10 rounded-full object-cover shrink-0 border border-black/10" 
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://res.cloudinary.com/dllugr1kc/image/upload/v1784118897/STOCK_aogohn.png';
-                          }}
-                        />
-                        <div>
-                          <div className="text-xs font-bold text-black">{t.username} <span className="text-[10px] text-accent-green font-normal">({t.handle})</span></div>
-                          <p className="text-[11px] text-black/60 italic mt-1 line-clamp-2">"{t.message}"</p>
+                    <div key={t.id} className="p-4 border-b border-black/5 last:border-0 bg-white">
+                      {editingTestimonialId === t.id && editingTestimonialData ? (
+                        <div className="space-y-3 w-full text-left">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div>
+                              <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Company/Client Name</label>
+                              <input
+                                type="text"
+                                value={editingTestimonialData.username}
+                                onChange={(e) => setEditingTestimonialData({ ...editingTestimonialData, username: e.target.value })}
+                                className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Social Handle</label>
+                              <input
+                                type="text"
+                                value={editingTestimonialData.handle}
+                                onChange={(e) => setEditingTestimonialData({ ...editingTestimonialData, handle: e.target.value })}
+                                className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Avatar Image URL</label>
+                            <input
+                              type="text"
+                              value={editingTestimonialData.avatar}
+                              onChange={(e) => setEditingTestimonialData({ ...editingTestimonialData, avatar: e.target.value })}
+                              className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Review Message</label>
+                            <textarea
+                              value={editingTestimonialData.message}
+                              onChange={(e) => setEditingTestimonialData({ ...editingTestimonialData, message: e.target.value })}
+                              rows={3}
+                              className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                            />
+                          </div>
+                          <div className="flex gap-2 justify-end">
+                            <button
+                              onClick={handleCancelEditTestimonial}
+                              className="px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-widest font-bold border border-black/10 bg-white text-black hover:bg-black/5 transition-all flex items-center gap-1"
+                            >
+                              <X size={10} /> Cancel
+                            </button>
+                            <button
+                              onClick={handleSaveEditTestimonial}
+                              className="px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-widest font-bold bg-accent-green text-white hover:bg-black hover:text-white transition-all flex items-center gap-1"
+                            >
+                              <Check size={10} /> Save
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                      <button
-                        onClick={() => handleDeleteTestimonial(t.id)}
-                        className="text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-xl transition-all border border-red-500/10 shrink-0"
-                      >
-                        <Trash2 size={13} />
-                      </button>
+                      ) : (
+                        <div className="flex items-start justify-between gap-4 w-full text-left">
+                          <div className="flex gap-3">
+                            <img 
+                              src={t.avatar} 
+                              alt={t.username} 
+                              className="w-10 h-10 rounded-full object-cover shrink-0 border border-black/10" 
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = 'https://res.cloudinary.com/dllugr1kc/image/upload/v1784118897/STOCK_aogohn.png';
+                              }}
+                            />
+                            <div>
+                              <div className="text-xs font-bold text-black">{t.username} <span className="text-[10px] text-accent-green font-normal">({t.handle})</span></div>
+                              <p className="text-[11px] text-black/60 italic mt-1 line-clamp-2">"{t.message}"</p>
+                            </div>
+                          </div>
+                          <div className="flex gap-1 shrink-0">
+                            <button
+                              onClick={() => handleStartEditTestimonial(t)}
+                              className="text-black/60 hover:bg-black/5 p-2 rounded-xl transition-all border border-black/5"
+                              title="Edit Testimonial"
+                            >
+                              <Pencil size={12} />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteTestimonial(t.id)}
+                              className="text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-xl transition-all border border-red-500/10 shrink-0"
+                              title="Delete Testimonial"
+                            >
+                              <Trash2 size={13} />
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                   {localSettings.testimonials.length === 0 && (
@@ -780,26 +979,109 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
                   <span className="font-bold text-[10px] uppercase tracking-widest text-black/50 block">Active Items ({localSettings.portfolioItems.length})</span>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[350px] overflow-y-auto p-1 border border-black/5 bg-primary/20 rounded-2xl">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[450px] overflow-y-auto p-1 border border-black/5 bg-primary/20 rounded-2xl">
                   {localSettings.portfolioItems.map((item) => (
-                    <div key={item.id} className="p-3 bg-white border border-black/5 rounded-xl flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <img 
-                          src={item.thumbnail} 
-                          alt={item.title} 
-                          className="w-12 h-12 rounded object-cover border border-black/5 shrink-0" 
-                        />
-                        <div className="min-w-0">
-                          <div className="text-xs font-bold truncate text-black">{item.title}</div>
-                          <div className="text-[9px] uppercase tracking-wider text-black/40 mt-0.5">{item.category} • {item.type}</div>
+                    <div key={item.id} className={`p-3 bg-white border border-black/5 rounded-xl flex gap-3 ${editingPortfolioId === item.id ? 'col-span-1 sm:col-span-2 flex-col' : 'items-center justify-between'}`}>
+                      {editingPortfolioId === item.id && editingPortfolioData ? (
+                        <div className="space-y-3 w-full text-left">
+                          <span className="font-bold text-[9px] uppercase tracking-widest text-accent-green block">Edit Creation Info</span>
+                          <div>
+                            <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Title</label>
+                            <input
+                              type="text"
+                              value={editingPortfolioData.title}
+                              onChange={(e) => setEditingPortfolioData({ ...editingPortfolioData, title: e.target.value })}
+                              className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                            />
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Category</label>
+                              <select
+                                value={editingPortfolioData.category}
+                                onChange={(e) => setEditingPortfolioData({ ...editingPortfolioData, category: e.target.value as ServiceTab })}
+                                className="w-full px-2 py-1 rounded-lg border border-black/10 bg-white text-xs outline-none"
+                              >
+                                <option value="graphic">Graphic Design</option>
+                                <option value="video">Video Production</option>
+                                <option value="ui">Web Development & UI</option>
+                              </select>
+                            </div>
+                            <div>
+                              <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Type</label>
+                              <select
+                                value={editingPortfolioData.type}
+                                onChange={(e) => setEditingPortfolioData({ ...editingPortfolioData, type: e.target.value as 'image' | 'video' })}
+                                className="w-full px-2 py-1 rounded-lg border border-black/10 bg-white text-xs outline-none"
+                              >
+                                <option value="image">Image</option>
+                                <option value="video">Video Link</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Redirect URL (Action Link)</label>
+                            <input
+                              type="text"
+                              value={editingPortfolioData.link}
+                              onChange={(e) => setEditingPortfolioData({ ...editingPortfolioData, link: e.target.value })}
+                              className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Thumbnail Image URL</label>
+                            <input
+                              type="text"
+                              value={editingPortfolioData.thumbnail}
+                              onChange={(e) => setEditingPortfolioData({ ...editingPortfolioData, thumbnail: e.target.value })}
+                              className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                            />
+                          </div>
+                          <div className="flex gap-2 justify-end">
+                            <button
+                              onClick={handleCancelEditPortfolio}
+                              className="px-2.5 py-1.5 rounded-lg text-[9px] uppercase tracking-widest font-bold border border-black/10 bg-white text-black hover:bg-black/5 transition-all flex items-center gap-1"
+                            >
+                              <X size={10} /> Cancel
+                            </button>
+                            <button
+                              onClick={handleSaveEditPortfolio}
+                              className="px-2.5 py-1.5 rounded-lg text-[9px] uppercase tracking-widest font-bold bg-accent-green text-white hover:bg-black hover:text-white transition-all flex items-center gap-1"
+                            >
+                              <Check size={10} /> Save
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                      <button
-                        onClick={() => handleDeletePortfolio(item.id)}
-                        className="text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-xl transition-all border border-red-500/10 shrink-0"
-                      >
-                        <Trash2 size={12} />
-                      </button>
+                      ) : (
+                        <>
+                          <div className="flex items-center gap-3">
+                            <img 
+                              src={item.thumbnail} 
+                              alt={item.title} 
+                              className="w-12 h-12 rounded object-cover border border-black/5 shrink-0" 
+                            />
+                            <div className="min-w-0">
+                              <div className="text-xs font-bold truncate text-black">{item.title}</div>
+                              <div className="text-[9px] uppercase tracking-wider text-black/40 mt-0.5">{item.category} • {item.type}</div>
+                            </div>
+                          </div>
+                          <div className="flex gap-1 shrink-0">
+                            <button
+                              onClick={() => handleStartEditPortfolio(item)}
+                              className="text-black/60 hover:bg-black/5 p-1.5 rounded-lg transition-all border border-black/5"
+                              title="Edit Creation"
+                            >
+                              <Pencil size={11} />
+                            </button>
+                            <button
+                              onClick={() => handleDeletePortfolio(item.id)}
+                              className="text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-xl transition-all border border-red-500/10 shrink-0"
+                            >
+                              <Trash2 size={12} />
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -861,10 +1143,44 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
                   <div key={groupIdx} className="border border-black/10 rounded-2xl overflow-hidden bg-white shadow-sm">
                     {/* Group Header */}
                     <div className="bg-primary/45 px-5 py-3 border-b border-black/10 flex justify-between items-center">
-                      <span className="font-bold text-[10px] uppercase tracking-widest text-black/60">{group.title}</span>
+                      {editingRateGroupId === groupIdx ? (
+                        <div className="flex items-center gap-2 flex-1 max-w-md">
+                          <input
+                            type="text"
+                            value={editingRateGroupTitle}
+                            onChange={(e) => setEditingRateGroupTitle(e.target.value)}
+                            className="px-3 py-1 rounded-lg border border-black/15 bg-white text-xs outline-none focus:border-accent-green flex-1"
+                          />
+                          <button
+                            onClick={() => handleSaveEditRateGroup(groupIdx)}
+                            className="text-emerald-500 hover:bg-emerald-50 p-1 rounded-lg transition-all border border-emerald-500/10 shrink-0"
+                            title="Save Title"
+                          >
+                            <Check size={12} />
+                          </button>
+                          <button
+                            onClick={handleCancelEditRateGroup}
+                            className="text-black/50 hover:bg-black/5 p-1 rounded-lg transition-all border border-black/5 shrink-0"
+                            title="Cancel"
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-[10px] uppercase tracking-widest text-black/60">{group.title}</span>
+                          <button
+                            onClick={() => handleStartEditRateGroup(groupIdx, group.title)}
+                            className="text-black/40 hover:text-black hover:bg-black/5 p-1 rounded-lg transition-all"
+                            title="Edit Group Title"
+                          >
+                            <Pencil size={11} />
+                          </button>
+                        </div>
+                      )}
                       <button
                         onClick={() => handleDeleteRateGroup(groupIdx)}
-                        className="text-red-500 hover:underline text-[9px] uppercase tracking-widest font-bold flex items-center gap-1"
+                        className="text-red-500 hover:underline text-[9px] uppercase tracking-widest font-bold flex items-center gap-1 shrink-0"
                       >
                         <Trash2 size={10} /> Delete Group
                       </button>
@@ -873,18 +1189,89 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
                     {/* Group Items */}
                     <div className="divide-y divide-black/5">
                       {group.items.map((item, itemIdx) => (
-                        <div key={itemIdx} className="p-4 flex justify-between items-start gap-4">
-                          <div className="min-w-0">
-                            <h4 className="text-xs font-bold text-black">{item.service} <span className="text-accent-green font-semibold ml-2">N${item.price}</span></h4>
-                            <p className="text-[10px] text-black/50 mt-1">{item.desc}</p>
-                            {item.rawText && <p className="text-[9px] text-accent-pink font-semibold uppercase mt-0.5">{item.rawText}</p>}
-                          </div>
-                          <button
-                            onClick={() => handleDeleteRateItem(groupIdx, itemIdx)}
-                            className="text-red-500 hover:bg-red-500/10 p-1.5 rounded-lg transition-all"
-                          >
-                            <Trash2 size={11} />
-                          </button>
+                        <div key={itemIdx} className="p-4 bg-white last:border-b-0">
+                          {editingRateItemId && editingRateItemId.groupIdx === groupIdx && editingRateItemId.itemIdx === itemIdx && editingRateItemData ? (
+                            <div className="space-y-3 w-full text-left">
+                              <span className="font-bold text-[9px] uppercase tracking-widest text-accent-green block">Edit Service Rate Info</span>
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div>
+                                  <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Service Name</label>
+                                  <input
+                                    type="text"
+                                    value={editingRateItemData.service}
+                                    onChange={(e) => setEditingRateItemData({ ...editingRateItemData, service: e.target.value })}
+                                    className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Price (N$ or custom)</label>
+                                  <input
+                                    type="text"
+                                    value={editingRateItemData.price}
+                                    onChange={(e) => setEditingRateItemData({ ...editingRateItemData, price: e.target.value })}
+                                    className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Details (Optional)</label>
+                                  <input
+                                    type="text"
+                                    value={editingRateItemData.rawText || ''}
+                                    onChange={(e) => setEditingRateItemData({ ...editingRateItemData, rawText: e.target.value })}
+                                    className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                                    placeholder="e.g. Deposit rule"
+                                  />
+                                </div>
+                              </div>
+                              <div>
+                                <label className="block text-[9px] uppercase tracking-wider text-black/50 font-semibold mb-1">Description</label>
+                                <textarea
+                                  value={editingRateItemData.desc}
+                                  onChange={(e) => setEditingRateItemData({ ...editingRateItemData, desc: e.target.value })}
+                                  rows={2}
+                                  className="w-full px-3 py-1.5 rounded-lg border border-black/10 bg-white text-xs outline-none focus:border-accent-green"
+                                />
+                              </div>
+                              <div className="flex gap-2 justify-end">
+                                <button
+                                  onClick={handleCancelEditRateItem}
+                                  className="px-2.5 py-1.5 rounded-lg text-[9px] uppercase tracking-widest font-bold border border-black/10 bg-white text-black hover:bg-black/5 transition-all flex items-center gap-1"
+                                >
+                                  <X size={10} /> Cancel
+                                </button>
+                                <button
+                                  onClick={() => handleSaveEditRateItem(groupIdx, itemIdx)}
+                                  className="px-2.5 py-1.5 rounded-lg text-[9px] uppercase tracking-widest font-bold bg-accent-green text-white hover:bg-black hover:text-white transition-all flex items-center gap-1"
+                                >
+                                  <Check size={10} /> Save
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="flex justify-between items-start gap-4 w-full text-left">
+                              <div className="min-w-0">
+                                <h4 className="text-xs font-bold text-black">{item.service} <span className="text-accent-green font-semibold ml-2">N${item.price}</span></h4>
+                                <p className="text-[10px] text-black/50 mt-1">{item.desc}</p>
+                                {item.rawText && <p className="text-[9px] text-accent-pink font-semibold uppercase mt-0.5">{item.rawText}</p>}
+                              </div>
+                              <div className="flex gap-1 shrink-0">
+                                <button
+                                  onClick={() => handleStartEditRateItem(groupIdx, itemIdx, item)}
+                                  className="text-black/60 hover:bg-black/5 p-1.5 rounded-lg transition-all border border-black/5"
+                                  title="Edit Pricing Item"
+                                >
+                                  <Pencil size={11} />
+                                </button>
+                                <button
+                                  onClick={() => handleDeleteRateItem(groupIdx, itemIdx)}
+                                  className="text-red-500 hover:bg-red-500/10 p-1.5 rounded-lg transition-all"
+                                  title="Delete Pricing Item"
+                                >
+                                  <Trash2 size={11} />
+                                </button>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       ))}
 
