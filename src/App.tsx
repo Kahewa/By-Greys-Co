@@ -1108,8 +1108,21 @@ export default function App() {
     async function loadSettings() {
       let isLoaded = false;
 
-      // 1. Load from Firestore if initialized and ready
-      if (isFirebaseReady && db) {
+      // 1. Try to load from centralized server API first
+      try {
+        const response = await fetch('/api/settings');
+        if (response.ok) {
+          const data = await response.json();
+          setSettings(data);
+          isLoaded = true;
+          console.log("Settings loaded from server API.");
+        }
+      } catch (e) {
+        console.error("Server API load failed, trying fallbacks:", e);
+      }
+
+      // 2. Load from Firestore if initialized and ready (as an additional cloud backup if needed)
+      if (!isLoaded && isFirebaseReady && db) {
         try {
           const docRef = doc(db, 'settings', 'portfolio');
           const docSnap = await getDoc(docRef);
@@ -1126,7 +1139,7 @@ export default function App() {
         }
       }
 
-      // 2. Load from LocalStorage if not already loaded from cloud
+      // 3. Load from LocalStorage if not already loaded
       if (!isLoaded) {
         try {
           const localVal = localStorage.getItem('portfolio_settings');
@@ -1154,6 +1167,23 @@ export default function App() {
       console.error("Failed to save to local storage:", e);
     }
 
+    // Save to server API
+    try {
+      const response = await fetch('/api/settings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updated),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to save to server');
+      }
+      console.log("Settings saved to server API.");
+    } catch (e) {
+      console.error("Server API save failed:", e);
+    }
+
     // Save to Firestore if connected
     if (isFirebaseReady && db) {
       try {
@@ -1161,7 +1191,6 @@ export default function App() {
         await setDoc(docRef, updated);
       } catch (e) {
         console.error("Firestore save failed:", e);
-        throw e;
       }
     }
   };
