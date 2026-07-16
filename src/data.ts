@@ -2,9 +2,9 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+ 
 import { PortfolioSettings } from './types';
-
+ 
 export const DEFAULT_SETTINGS: PortfolioSettings = {
   bio: "Hi, I'm Grace Shuuya. A Namibian-based Software Development Degree holder, who is passionate about producing aesthetic experiences that reflect my skill and faith. I specialize in UI Design, Web Development, Canva Creation and Videography, overseen by a strategic eye for creative direction.",
   profilePhoto: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772275124/o_p9ksap.jpg",
@@ -21,7 +21,7 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
     whatsappGroup: "https://chat.whatsapp.com/FniXtxlkwzgDLXEBZjVE6W?mode=gi_t",
     discordChannel: "https://discord.gg/dQkcmKyrq",
     tiktokPage: "https://www.tiktok.com/@jesus.unites",
-    followersCount: "2k+"
+    followersCount: "3k+"
   },
   testimonials: [
     {
@@ -52,16 +52,15 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
     { id: 9, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448512/Yellow_and_Pink_Watercolour_Pets_Kitty_Party_Invitation_sruupa.png", link: "#", type: 'image' },
     { id: 10, title: "Advanced Ad", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364320/25_Nov_Agenda_Drop_gdkwyi.png", link: "#", type: 'image' },
     { id: 11, title: "Basic Design", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364385/White_Minimal_Skincare_Ingredient_Overview_Instagram_Post_omihtw.png", link: "#", type: 'image' },
-    { id: 12, title: "Invitations", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1773448512/Yellow_and_Pink_Watercolour_Pets_Kitty_Party_Invitation_sruupa.png", link: "#", type: 'image' },
     { id: 13, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364294/Modern_Daily_Podcast_YouTube_Thumbnail_eloeom.png", link: "#", type: 'image' },
     { id: 14, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
     { id: 15, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364361/Beige_White_and_Blue_Scrapbook_Style_Personal_Desktop_Wallpaper_t0it74.png", link: "#", type: 'image' },
-
+ 
     // Video
     { id: 16, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989031/3_jivvyf.png", link: "https://www.instagram.com/reel/DXbyVdADBlA/?igsh=b3hjeXdkZ2F1d3d3", type: 'video' },
     { id: 17, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
     { id: 18, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
-
+ 
     // UI Design (Web Development)
     { id: 19, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' }
   ],
@@ -70,7 +69,7 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Graphic Design Services",
         items: [
-          { service: "Basic Creative", desc: "Simple design structures - Single product ads | Name tags | ETC", price: "60.00" },
+          { service: "Basic Creative", desc: "Simple design structures - Single product ads | Name tags | ETC", price: "90.00" },
           { service: "Thumbnails", desc: "TikTok | IG Reels | Reel Shorts | YouTube | IG Story take-over covers", price: "130.00" },
           { service: "Invitations and Letters", desc: "Graduation | Wedding | Party | Love letters | ETC", price: "150.00" },
           { service: "Advanced Creative", desc: "Product/Service ads | Pricelists | Book covers | Info posts | Event Posters | ETC", price: "180.00" },
@@ -99,16 +98,29 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
     ],
     video: [
       {
+        title: "Call Out Job Fees",
+        items: [
+          { service: "Sole Entity", desc: "Individual Projects (Bridal Shower, Baby Shower, Graduations, etc,)", price: "80/hr + price of desired video duration" },
+          { service: "Events (Corporate, Weddings, etc)", desc: "Includes 4 short form reels + one 2min vid", price: "5OO/hr for 4-8hrs", rawText: "" }
+        ]
+      },
+      {
+        title: "Motion Graphics",
+        items: [
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min", price: "400 starting price" }
+        ]
+      },
+      {
         title: "Video Editing Services",
         items: [
-          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "200.00", rawText: "If raw content is over 5min = N$300" },
-          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "390.00", rawText: "If raw content is over 10min = N$490" },
-          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "500.00", rawText: "If raw content is over 20min = N$600" },
-          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "650.00", rawText: "If raw content is over 25min = N$750" },
-          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "750.00", rawText: "If raw content is over 40min = N$850" },
-          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "900.00", rawText: "If raw content is over 1hr = N$1050" },
-          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "950.00", rawText: "If raw content is over 40min = N$1050" },
-          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "1200.00", rawText: "If raw content is over 1hr = N$1350" }
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "250.00", rawText: "If raw content is over 5min = N$350" },
+          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "400.00", rawText: "If raw content is over 10min = N$500" },
+          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "600.00", rawText: "If raw content is over 20min = N$700" },
+          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "900.00", rawText: "If raw content is over 25min = N$1100" },
+          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "1200.00", rawText: "If raw content is over 40min = N$1400" },
+          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "1800.00", rawText: "If raw content is over 1hr = N$2200" },
+          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "1580.00", rawText: "If raw content is over 40min = N$1780" },
+          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "2180.00", rawText: "If raw content is over 1hr = N$2380" }
         ]
       }
     ],
@@ -122,11 +134,6 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
         ]
       }
     ]
-  },
-  videoFilming: {
-    title: "For filming content for the client:",
-    calloutFee: "Callout Fee: N$80.00/hr + Price of preferred duration",
-    equipment: "Equipment: DJI Osmo Nano"
   },
   lastUpdated: 0
 };
