@@ -2,9 +2,9 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
- 
+
 import { PortfolioSettings } from './types';
- 
+
 export const DEFAULT_SETTINGS: PortfolioSettings = {
   bio: "Hi, I'm Grace Shuuya. A Namibian-based Software Development Degree holder, who is passionate about producing aesthetic experiences that reflect my skill and faith. I specialize in UI Design, Web Development, Canva Creation and Videography, overseen by a strategic eye for creative direction.",
   profilePhoto: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772275124/o_p9ksap.jpg",
@@ -55,12 +55,12 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
     { id: 13, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364294/Modern_Daily_Podcast_YouTube_Thumbnail_eloeom.png", link: "#", type: 'image' },
     { id: 14, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364366/Simple_Minimalist_Clean_Lifestyle_Vlog_YouTube_Thumbnail_c3jjab.png", link: "#", type: 'image' },
     { id: 15, title: "Thumbnails", category: 'graphic', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1772364361/Beige_White_and_Blue_Scrapbook_Style_Personal_Desktop_Wallpaper_t0it74.png", link: "#", type: 'image' },
- 
+
     // Video
     { id: 16, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989031/3_jivvyf.png", link: "https://www.instagram.com/reel/DXbyVdADBlA/?igsh=b3hjeXdkZ2F1d3d3", type: 'video' },
     { id: 17, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
     { id: 18, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
- 
+
     // UI Design (Web Development)
     { id: 19, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' }
   ],
@@ -88,11 +88,11 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Graphic Design Packages",
         items: [
+          { service: "Party Pack", desc: "2 Page PDF Invitation (party details, wishlist, theme breakdown, etc) + RSVP Link", price: "400.00" },
           { service: "Logo Design Pack", desc: "Logo (Light+Dark Mode) + Business Cards + Email Banner", price: "550.00" },
-          { service: "Party Pack", desc: "2 Page PDF Invitation + 1 Page PDF Wishlist + GRWM reel", price: "650.00" },
-          { service: "Start-up Business Pack", desc: "Logo Design Pack + x2 Advanced Creatives + 3 Page PDF Catalogue", price: "1000.00" },
-          { service: "Wedding Pack", desc: "3 Page PDF Invitation + Bridesmaid/Groomsman cards + 5 day Countdown", price: "1,300.00" },
-          { service: "Business Pack", desc: "Logo Design Pack | 2 Page Company CI Doc | 5 Page Company Profile", price: "2,250.00" }
+          { service: "Small Business Pack", desc: "Logo Design Pack + x2 Advanced Creatives + 3 Page PDF Catalogue", price: "1000.00" },
+          { service: "Business Pack", desc: "2 Page Company Corporate Identity Doc | 5 Page Company Profile", price: "1200.00" },
+          { service: "Wedding Pack", desc: "3 Page PDF Invitation + RSVP Link + will you be Bridesmaid/Groomsman cards(printed) + 5 day Countdown", price: "1800.00" }
         ]
       }
     ],
