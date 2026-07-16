@@ -26,7 +26,8 @@ import {
   X,
   Check,
   ArrowUp,
-  ArrowDown
+  ArrowDown,
+  Download
 } from 'lucide-react';
 import { PortfolioSettings, Testimonial, PortfolioItem, RateGroup, RateItem, ServiceTab } from '../types';
 
@@ -115,6 +116,16 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
   const handleLogout = () => {
     setIsAuthenticated(false);
     sessionStorage.removeItem('admin_auth');
+  };
+
+  const handleDownloadBackup = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(localSettings, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", "settings.json");
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
   };
 
   const triggerSave = async (updated: PortfolioSettings) => {
@@ -517,6 +528,13 @@ export const AdminView: React.FC<AdminViewProps> = ({ settings, onSave, onClose 
           <h1 className="text-4xl font-serif mt-1">Management Hub</h1>
         </div>
         <div className="flex items-center gap-4">
+          <button
+            onClick={handleDownloadBackup}
+            className="px-5 py-2.5 rounded-full border border-accent-pink/30 text-accent-pink bg-white text-xs uppercase tracking-widest font-bold hover:bg-accent-pink hover:text-black transition-all flex items-center gap-2"
+            title="Download settings.json backup file for GitHub"
+          >
+            <Download size={14} /> Download Config
+          </button>
           <button
             onClick={onClose}
             className="px-5 py-2.5 rounded-full border border-black/15 bg-white text-xs uppercase tracking-widest font-bold hover:bg-black hover:text-white transition-all flex items-center gap-2"

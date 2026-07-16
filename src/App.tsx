@@ -1106,63 +1106,104 @@ export default function App() {
   // Load custom settings
   useEffect(() => {
     async function loadSettings() {
-      let isLoaded = false;
+      let serverData: PortfolioSettings | null = null;
+      let localData: PortfolioSettings | null = null;
 
-      // 1. Try to load from centralized server API first
+      // 1. Try to fetch from server
       try {
         const response = await fetch('/api/settings');
         if (response.ok) {
-          const data = await response.json();
-          setSettings(data);
-          isLoaded = true;
-          console.log("Settings loaded from server API.");
+          serverData = await response.json();
+          console.log("Fetched settings from server:", serverData);
         }
       } catch (e) {
-        console.error("Server API load failed, trying fallbacks:", e);
+        console.error("Server API load failed:", e);
       }
 
-      // 2. Load from Firestore if initialized and ready (as an additional cloud backup if needed)
-      if (!isLoaded && isFirebaseReady && db) {
-        try {
-          const docRef = doc(db, 'settings', 'portfolio');
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            setSettings(docSnap.data() as PortfolioSettings);
-            isLoaded = true;
-          } else {
-            // Seed defaults
-            await setDoc(docRef, DEFAULT_SETTINGS);
-            console.log("Seeded database with default settings.");
-          }
-        } catch (e) {
-          console.error("Firestore settings load failed, using local fallback:", e);
+      // 2. Try to load from LocalStorage
+      try {
+        const localVal = localStorage.getItem('portfolio_settings');
+        if (localVal) {
+          localData = JSON.parse(localVal);
+          console.log("Loaded settings from LocalStorage:", localData);
         }
+      } catch (e) {
+        console.error("Local storage load failed:", e);
       }
 
-      // 3. Load from LocalStorage if not already loaded
-      if (!isLoaded) {
-        try {
-          const localVal = localStorage.getItem('portfolio_settings');
-          if (localVal) {
-            setSettings(JSON.parse(localVal));
+      // 3. Compare and select the best source of truth
+      let chosenSettings: PortfolioSettings = DEFAULT_SETTINGS;
+      let needsServerSync = false;
+
+      const serverTime = serverData?.lastUpdated || 0;
+      const localTime = localData?.lastUpdated || 0;
+
+      if (serverData && localData) {
+        if (localTime > serverTime) {
+          console.log(`Local settings are newer (${localTime} > ${serverTime}). Restoring local settings to server...`);
+          chosenSettings = localData;
+          needsServerSync = true;
+        } else {
+          console.log(`Server settings are newer or equal (${serverTime} >= ${localTime}). Using server settings...`);
+          chosenSettings = serverData;
+          // Sync to local storage to keep it up to date
+          try {
+            localStorage.setItem('portfolio_settings', JSON.stringify(serverData));
+          } catch (e) {
+            console.error(e);
           }
-        } catch (e) {
-          console.error("Local storage load failed:", e);
         }
+      } else if (serverData) {
+        console.log("No local settings found. Using server settings.");
+        chosenSettings = serverData;
+        // Cache in local storage
+        try {
+          localStorage.setItem('portfolio_settings', JSON.stringify(serverData));
+        } catch (e) {
+          console.error(e);
+        }
+      } else if (localData) {
+        console.log("No server settings available. Using local settings.");
+        chosenSettings = localData;
+        needsServerSync = true;
+      } else {
+        console.log("No custom settings found on server or locally. Using default settings.");
+        chosenSettings = DEFAULT_SETTINGS;
       }
 
+      setSettings(chosenSettings);
       setIsLoading(false);
+
+      // If we used a newer local copy, asynchronously push it to the server to heal the server state
+      if (needsServerSync) {
+        try {
+          await fetch('/api/settings', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(chosenSettings),
+          });
+          console.log("Server state synchronized and healed successfully.");
+        } catch (e) {
+          console.error("Async server healing failed:", e);
+        }
+      }
     }
 
     loadSettings();
   }, []);
 
   const handleSaveSettings = async (updated: PortfolioSettings) => {
-    setSettings(updated);
+    const withTimestamp = {
+      ...updated,
+      lastUpdated: Date.now()
+    };
+    setSettings(withTimestamp);
     
     // Save locally
     try {
-      localStorage.setItem('portfolio_settings', JSON.stringify(updated));
+      localStorage.setItem('portfolio_settings', JSON.stringify(withTimestamp));
     } catch (e) {
       console.error("Failed to save to local storage:", e);
     }
@@ -1174,7 +1215,7 @@ export default function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updated),
+        body: JSON.stringify(withTimestamp),
       });
       if (!response.ok) {
         throw new Error('Failed to save to server');
@@ -1188,7 +1229,7 @@ export default function App() {
     if (isFirebaseReady && db) {
       try {
         const docRef = doc(db, 'settings', 'portfolio');
-        await setDoc(docRef, updated);
+        await setDoc(docRef, withTimestamp);
       } catch (e) {
         console.error("Firestore save failed:", e);
       }

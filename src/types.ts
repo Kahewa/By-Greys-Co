@@ -61,4 +61,5 @@ export interface PortfolioSettings {
     calloutFee: string;
     equipment: string;
   };
+  lastUpdated?: number;
 }
