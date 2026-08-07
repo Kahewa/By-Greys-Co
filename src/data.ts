@@ -119,14 +119,14 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Video Editing Services",
         items: [
-          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "TBA", rawText: "If raw content is over 5min = N$350" },
-          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "TBA", rawText: "If raw content is over 10min = N$500" },
-          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "TBA", rawText: "If raw content is over 20min = N$700" },
-          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "TBA", rawText: "If raw content is over 25min = N$1100" },
-          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "TBA", rawText: "If raw content is over 40min = N$1400" },
-          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "TBA", rawText: "If raw content is over 1hr = N$2200" },
-          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "TBA", rawText: "If raw content is over 40min = N$1780" },
-          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "TBA", rawText: "If raw content is over 1hr = N$2380" }
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "TBA", rawText: "If raw content is over 5min = N$" },
+          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "TBA", rawText: "If raw content is over 10min = N$" },
+          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "TBA", rawText: "If raw content is over 20min = N$" },
+          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "TBA", rawText: "If raw content is over 25min = N$" },
+          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "TBA", rawText: "If raw content is over 40min = N$" },
+          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "TBA", rawText: "If raw content is over 1hr = N$" },
+          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "TBA", rawText: "If raw content is over 40min = N$" },
+          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "TBA", rawText: "If raw content is over 1hr = N$" }
         ]
       }
     ],
