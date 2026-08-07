@@ -58,11 +58,17 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
 
     // Video
     { id: 16, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989031/3_jivvyf.png", link: "https://www.instagram.com/reel/DXbyVdADBlA/?igsh=b3hjeXdkZ2F1d3d3", type: 'video' },
-    { id: 17, title: "Life Update", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632055/WhatsApp_Image_2026-04-19_at_22.53.22_pkc4nj.jpg", link: "https://www.instagram.com/reel/DWRQAnIAhhd/?igsh=MXI5YnA4aG1wOGlsZw==", type: 'video' },
-    { id: 18, title: "Short Vlog", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776632056/WhatsApp_Image_2026-04-19_at_22.53.23_bztk0q.jpg", link: "https://www.instagram.com/reel/DXJMI-Sgsqb/?igsh=aTA3eGYwaDVmMnc3", type: 'video' },
-
+    { id: 17, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129763/6_yyk6kr.jpg", link: "https://www.instagram.com/reel/DYR7S9gIqYd/?igsh=ZGVycGRuaTRxbzZm", type: 'video' },
+    { id: 18, title: "WRC Collective", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129770/5_rurw0d.jpg", link: "https://www.instagram.com/reel/DZYFiErI6Id/?igsh=MWE0Znl0eDd5ZXBmMg==", type: 'video' },
+    { id: 19, title: "Silk Streeet Atelier", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129812/9_qt4m0v.jpg", link: "https://www.instagram.com/reel/DYg8sxaMQbh/?igsh=MXRudm4ydTA0NjMwaQ==", type: 'video' },
+    { id: 20, title: "Every Nation Dorado", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129750/11_pcbchx.jpg", link: "https://www.instagram.com/reel/DbKRJc_I9pj/?igsh=cDVlb2tkZHpmMnUy", type: 'video' },
+    { id: 21, title: "Every Nation Dorado", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129768/10_mgu3wf.jpg", link: "https://www.instagram.com/reel/Da4jCLVoeug/?igsh=MW45M2twNmFwaDRnbg==", type: 'video' },
+    { id: 22, title: "Every Nation Dorado", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129769/8_zus8br.jpg", link: "https://www.instagram.com/reel/DbDMcxNoPdh/?igsh=MXRvcGx5MGhvdHRzMQ==", type: 'video' },
+    { id: 23, title: "Every Nation Dorado", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129800/12_xw3hqg.jpg", link: "https://vt.tiktok.com/ZS44VqhkE/", type: 'video' },
+    { id: 24, title: "Every Nation Dorado", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129760/7_uunmjd.jpg", link: "https://www.instagram.com/reel/DaoHb-9xc5_/?igsh=Y2l6cWp5YnF4N3cy", type: 'video' },
+    
     // UI Design (Web Development)
-    { id: 19, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' }
+    { id: 25, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' }
   ],
   rates: {
     graphics: [
@@ -100,27 +106,27 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Call Out Job Fees",
         items: [
-          { service: "Sole Entity", desc: "Individual Projects (Bridal Shower, Baby Shower, Graduations, etc,)", price: "80/hr + price of desired video duration" },
-          { service: "Events (Corporate, Weddings, etc)", desc: "Includes 4 short form reels + one 2min vid", price: "5OO/hr for 4-8hrs", rawText: "" }
+          { service: "Sole Entity", desc: "Individual Projects (Bridal Shower, Baby Shower, Graduations, etc,)", price: "TBA" },
+          { service: "Events (Corporate, Weddings, etc)", desc: "Includes 4 short form reels + one 2min vid", price: "TBA", rawText: "" }
         ]
       },
       {
         title: "Motion Graphics",
         items: [
-          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min", price: "400 starting price" }
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min", price: "TBA starting price" }
         ]
       },
       {
         title: "Video Editing Services",
         items: [
-          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "250.00", rawText: "If raw content is over 5min = N$350" },
-          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "400.00", rawText: "If raw content is over 10min = N$500" },
-          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "600.00", rawText: "If raw content is over 20min = N$700" },
-          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "900.00", rawText: "If raw content is over 25min = N$1100" },
-          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "1200.00", rawText: "If raw content is over 40min = N$1400" },
-          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "1800.00", rawText: "If raw content is over 1hr = N$2200" },
-          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "1580.00", rawText: "If raw content is over 40min = N$1780" },
-          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "2180.00", rawText: "If raw content is over 1hr = N$2380" }
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "TBA", rawText: "If raw content is over 5min = N$350" },
+          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "TBA", rawText: "If raw content is over 10min = N$500" },
+          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "TBA", rawText: "If raw content is over 20min = N$700" },
+          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "TBA", rawText: "If raw content is over 25min = N$1100" },
+          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "TBA", rawText: "If raw content is over 40min = N$1400" },
+          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "TBA", rawText: "If raw content is over 1hr = N$2200" },
+          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "TBA", rawText: "If raw content is over 40min = N$1780" },
+          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "TBA", rawText: "If raw content is over 1hr = N$2380" }
         ]
       }
     ],
@@ -128,9 +134,9 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Web Development & Design",
         items: [
-          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "Starting Price - N$1500.00" },
-          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "Starting Price - N$1800.00" },
-          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "Starting Price - N$4500" }
+          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "Starting Price - TBA" },
+          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "Starting Price - TBA" },
+          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "Starting Price - TBA" }
         ]
       }
     ]
