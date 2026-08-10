@@ -946,7 +946,7 @@ const RatesView: React.FC<{ settings: PortfolioSettings }> = ({ settings }) => {
       className="pt-36 md:pt-32 pb-20 px-6 max-w-7xl mx-auto"
     >
       <div className="text-center mb-10 md:mb-12">
-        <h2 className="text-4xl font-serif mb-4">Service Rates</h2>
+        <h2 className="text-4xl font-serif mb-4">International Service Rates</h2>
         <p className="text-black/60">Quality work tailored to your vision</p>
       </div>
 

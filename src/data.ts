@@ -127,9 +127,9 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Web Development & Design",
         items: [
-          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "Starting Price - 500" },
-          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "Starting Price - 1500" },
-          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "Starting Price - 4000" }
+          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "500 - Starting Price" },
+          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "1500 - Starting Price" },
+          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "4000 - Starting Price" }
         ]
       }
     ]
