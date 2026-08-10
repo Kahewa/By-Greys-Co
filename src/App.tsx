@@ -1000,11 +1000,11 @@ const RatesView: React.FC<{ settings: PortfolioSettings }> = ({ settings }) => {
                       <h4 className="font-serif text-lg leading-tight">{item.service}</h4>
                       <div className="text-left sm:text-right">
                         <div className="font-bold text-accent-green sm:whitespace-nowrap">
-                          {item.price.includes('N$') || item.price.includes('Consultation') || item.price.includes('Quote') ? item.price : `N$${item.price}`}
+                          {item.price.includes('USD') || item.price.includes('Consultation') || item.price.includes('Quote') ? item.price : `USD${item.price}`}
                         </div>
                         {activeSection === 'video' && (item.rawText || item.raw) && (
                           <span className="block text-[9px] text-black/30 font-normal mt-1 uppercase tracking-tighter sm:text-right">
-                            {item.rawText || `Raw: N$${item.raw}`}
+                            {item.rawText || `Raw: USD${item.raw}`}
                           </span>
                         )}
                       </div>
@@ -1022,10 +1022,10 @@ const RatesView: React.FC<{ settings: PortfolioSettings }> = ({ settings }) => {
                       <td className="px-8 py-5 font-serif text-lg leading-tight w-1/3">{item.service}</td>
                       <td className="px-8 py-5 text-sm text-black/60">{item.desc}</td>
                       <td className="px-8 py-5 text-right font-bold text-accent-green whitespace-nowrap">
-                        {item.price.includes('N$') || item.price.includes('Consultation') || item.price.includes('Quote') ? item.price : `N$${item.price}`}
+                        {item.price.includes('USD') || item.price.includes('Consultation') || item.price.includes('Quote') ? item.price : `USD${item.price}`}
                         {activeSection === 'video' && (item.rawText || item.raw) && (
                           <span className="block text-[10px] text-black/30 font-normal">
-                            {item.rawText || `Raw Content: N$${item.raw}`}
+                            {item.rawText || `Raw Content: USD${item.raw}`}
                           </span>
                         )}
                       </td>

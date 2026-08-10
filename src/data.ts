@@ -68,65 +68,58 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
     { id: 24, title: "Every Nation Dorado", category: 'video', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1786129760/7_uunmjd.jpg", link: "https://www.instagram.com/reel/DaoHb-9xc5_/?igsh=Y2l6cWp5YnF4N3cy", type: 'video' },
     
     // UI Design (Web Development)
-    { id: 25, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "https://bygreysco.netlify.app", type: 'image' }
+    { id: 25, title: "ByGraceCo", category: 'ui', thumbnail: "https://res.cloudinary.com/dllugr1kc/image/upload/v1776989010/image_2026-04-24_020325870_gn3bhv.png", link: "www.bygreys.co", type: 'image' }
   ],
   rates: {
     graphics: [
       {
         title: "Graphic Design Services",
         items: [
-          { service: "Basic Creative", desc: "Simple design structures - Single product ads | Name tags | ETC", price: "90.00" },
-          { service: "Thumbnails", desc: "TikTok | IG Reels | Reel Shorts | YouTube | IG Story take-over covers", price: "130.00" },
-          { service: "Invitations and Letters", desc: "Graduation | Wedding | Party | Love letters | ETC", price: "150.00" },
-          { service: "Advanced Creative", desc: "Product/Service ads | Pricelists | Book covers | Info posts | Event Posters | ETC", price: "180.00" },
+          { service: "Basic Creative", desc: "Simple design structures - Single product ads | Name tags | ETC", price: "50.00" },
+          { service: "Thumbnails", desc: "TikTok | IG Reels | Reel Shorts | YouTube | IG Story take-over covers", price: "75.00" },
+          { service: "Invitations and Letters", desc: "Graduation | Wedding | Party | Love letters | ETC", price: "100.00" },
+          { service: "Advanced Creative", desc: "Product/Service ads | Pricelists | Book covers | Info posts | Event Posters | ETC", price: "150.00" },
           { service: "Logo Design", desc: "New Designs | Old logo refinement", price: "200.00" }
         ]
       },
       {
         title: "PDF Documents (Invitations/Catalogues/Business Profiles)",
         items: [
-          { service: "One Page", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "200.00" },
-          { service: "Two Pages", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "380.00" },
-          { service: "Three Pages", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "550.00" },
+          { service: "One Page", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "75.00" },
+          { service: "Two Pages", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "140.00" },
+          { service: "Three Pages", desc: "A4 size - Includes: Consultation | Active Links | Professional Design tailored to client needs", price: "200.00" },
           { service: "More Pages", desc: "Over 4 pages - Consultation needed", price: "Quote based" }
         ]
       },
       {
         title: "Graphic Design Packages",
         items: [
-          { service: "Party Pack", desc: "2 Page PDF Invitation (party details, wishlist, theme breakdown, etc) + RSVP Link", price: "400.00" },
-          { service: "Logo Design Pack", desc: "Logo (Light+Dark Mode) + Business Cards + Email Banner", price: "550.00" },
-          { service: "Small Business Pack", desc: "Logo Design Pack + x2 Advanced Creatives + 3 Page PDF Catalogue", price: "1000.00" },
-          { service: "Business Pack", desc: "2 Page Company Corporate Identity Doc | 5 Page Company Profile", price: "1200.00" },
-          { service: "Wedding Pack", desc: "3 Page PDF Invitation + RSVP Link + will you be Bridesmaid/Groomsman cards(printed) + 5 day Countdown", price: "1800.00" }
+          { service: "Party Pack", desc: "2 Page PDF Invitation (party details, wishlist, theme breakdown, etc) + RSVP Link", price: "180.00" },
+          { service: "Logo Design Pack", desc: "Logo (Light+Dark Mode) + Business Cards + Email Banner", price: "475.00" },
+          { service: "Small Business Pack", desc: "Logo Design Pack + x2 Advanced Creatives + 3 Page PDF Catalogue", price: "645.00" },
+          { service: "Business Pack", desc: "2 Page Company Corporate Identity Doc | 5 Page Company Profile", price: "1000.00" },
+          { service: "Wedding Pack", desc: "3 Page PDF Invitation + RSVP Link + will you be Bridesmaid/Groomsman cards(printed) + 5 day Countdown", price: "1365.00" }
         ]
       }
     ],
     video: [
       {
-        title: "Call Out Job Fees",
-        items: [
-          { service: "Sole Entity", desc: "Individual Projects (Bridal Shower, Baby Shower, Graduations, etc,)", price: "TBA" },
-          { service: "Events (Corporate, Weddings, etc)", desc: "Includes 4 short form reels + one 2min vid", price: "TBA", rawText: "" }
-        ]
-      },
-      {
         title: "Motion Graphics",
         items: [
-          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min", price: "TBA starting price" }
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min", price: "100/hr" }
         ]
       },
       {
         title: "Video Editing Services",
         items: [
-          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "TBA", rawText: "If raw content is over 5min = N$" },
-          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "TBA", rawText: "If raw content is over 10min = N$" },
-          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "TBA", rawText: "If raw content is over 20min = N$" },
-          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "TBA", rawText: "If raw content is over 25min = N$" },
-          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "TBA", rawText: "If raw content is over 40min = N$" },
-          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "TBA", rawText: "If raw content is over 1hr = N$" },
-          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "TBA", rawText: "If raw content is over 40min = N$" },
-          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "TBA", rawText: "If raw content is over 1hr = N$" }
+          { service: "1 MINUTE", desc: "End results restricted to 10sec to 1Min30sec", price: "95", rawText: "If raw content is over 5min = $145" },
+          { service: "2-5 MINUTES", desc: "End results restricted to 1Min30sec to 5Min", price: "250", rawText: "If raw content is over 10min = $300" },
+          { service: "6-10 MINUTES", desc: "End results restricted to 6Min to 10 Min", price: "375", rawText: "If raw content is over 20min = $425" },
+          { service: "11-15 MINUTES", desc: "End results restricted to 11Min to 15 Min", price: "700", rawText: "If raw content is over 25min = $750" },
+          { service: "16-20 MINUTES", desc: "End results restricted to 16Min to 20 Min", price: "1000", rawText: "If raw content is over 40min = $1100" },
+          { service: "21-45 MINUTES", desc: "End results restricted to 21Min to 45Min", price: "1500", rawText: "If raw content is over 1hr = $1600" },
+          { service: "YouTube Mini", desc: "16-20 min + trailer + thumbnail", price: "1145", rawText: "If raw content is over 40min = $1245" },
+          { service: "YouTube Max", desc: "21-45 min + trailer + thumbmail", price: "1645", rawText: "If raw content is over 1hr = $1745" }
         ]
       }
     ],
@@ -134,9 +127,9 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Web Development & Design",
         items: [
-          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "Starting Price - TBA" },
-          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "Starting Price - TBA" },
-          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "Starting Price - TBA" }
+          { service: "Web Based Personal Profile and Portfolio", desc: "Aesthetic single-page profile, digital CV, or custom portfolio site", price: "Starting Price - 500" },
+          { service: "User Interface Design For Web and Mobile Applications", desc: "High-fidelity, modern UI design tailored for web or mobile apps", price: "Starting Price - 1500" },
+          { service: "Full-Stack Website Development", desc: "Complete web application with frontend, backend integration, and database features", price: "Starting Price - 4000" }
         ]
       }
     ]
