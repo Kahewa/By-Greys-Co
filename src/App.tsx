@@ -852,7 +852,7 @@ const ServicesView = ({ portfolioItems }: { portfolioItems: PortfolioItem[] }) =
       className="pt-36 md:pt-32 pb-20 px-6 max-w-7xl mx-auto"
     >
       <div className="text-center mb-10 md:mb-12">
-        <h2 className="text-4xl font-serif mb-4">Created By Grace</h2>
+        <h2 className="text-4xl font-serif mb-4">See My Work</h2>
         <p className="text-black/60">A curated selection of my creative work.</p>
       </div>
 
