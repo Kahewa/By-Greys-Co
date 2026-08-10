@@ -94,7 +94,7 @@ export const DEFAULT_SETTINGS: PortfolioSettings = {
       {
         title: "Graphic Design Packages",
         items: [
-          { service: "Party Pack", desc: "2 Page PDF Invitation (party details, wishlist, theme breakdown, etc) + RSVP Link", price: "180.00" },
+          { service: "Party Pack", desc: "2 Page PDF Invitation (party details, wishlist, theme breakdown, etc) + RSVP Link", price: "225.00" },
           { service: "Logo Design Pack", desc: "Logo (Light+Dark Mode) + Business Cards + Email Banner", price: "475.00" },
           { service: "Small Business Pack", desc: "Logo Design Pack + x2 Advanced Creatives + 3 Page PDF Catalogue", price: "645.00" },
           { service: "Business Pack", desc: "2 Page Company Corporate Identity Doc | 5 Page Company Profile", price: "1000.00" },
