@@ -613,7 +613,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setActiveTab, settings }) => (
         className="col-span-2 md:col-span-2 bg-white border border-black/10 rounded-[25px] md:rounded-[30px] p-5 md:p-8 cursor-pointer relative overflow-hidden group min-h-[180px] md:min-h-[300px] flex flex-col justify-end"
       >
         <div className="absolute top-0 left-0 w-full h-full z-0 opacity-40 group-hover:opacity-60 transition-opacity">
-          <img src="https://res.cloudinary.com/dllugr1kc/image/upload/v1784118773/image_2026-07-15_143251063_moctdf.png" className="w-full h-full object-cover" alt="Portfolio Preview" />
+          <img src="https://res.cloudinary.com/dllugr1kc/image/upload/v1787049624/image_2026-08-18_124021223_yuqdqe.png" className="w-full h-full object-cover" alt="Portfolio Preview" />
         </div>
         <div className="relative z-10 bg-white/80 backdrop-blur-md p-3 md:p-6 rounded-xl border border-black/5">
           <Palette className="text-accent-green mb-2 md:mb-4" size={24} />
